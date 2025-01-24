@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3a6f555fb5c0f834282103b123bf4c13, type: 3}
-  m_Name: Spider Eggs
+  m_Name: Spider Eyes
   m_EditorClassIdentifier: 
   Name: SpiderEggs
   Sprite: {fileID: 21300000, guid: bcd819d84727e474799e41e6773c7298, type: 3}
