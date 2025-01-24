@@ -9,3 +9,10 @@ public enum FlavourType
     Bitter,
     Umami
 }
+
+public enum BobaTeaPart
+{
+    Balls,
+    Tea,
+    Toppings
+}
