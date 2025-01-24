@@ -47,6 +47,10 @@ public class LevelManager : MonoBehaviour
 
         if (currentDay <= 2)
             GenerateCustomer(0);
+        else if (currentDay <= 4)
+            GenerateCustomer(1);
+        else
+            GenerateCustomer(2);
 
     }
 
