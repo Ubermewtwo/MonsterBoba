@@ -163,6 +163,7 @@ GameObject:
   - component: {fileID: 4440296898831675754}
   - component: {fileID: 6567370818841181010}
   - component: {fileID: 5305262593420622750}
+  - component: {fileID: 6897836594035539693}
   m_Layer: 5
   m_Name: MonsterPartImage
   m_TagString: Untagged
@@ -240,6 +241,18 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &6897836594035539693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2107604819987490638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7148e484648dba4981eb420435c81a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3306541460594133822
 GameObject:
   m_ObjectHideFlags: 0

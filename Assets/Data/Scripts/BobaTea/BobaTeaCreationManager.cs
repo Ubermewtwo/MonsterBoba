@@ -10,7 +10,35 @@ public class BobaTeaCreationManager : MonoBehaviour
     [SerializeField] private UDictionary<MonsterPart, int> monsterParts;
     [SerializeField] private List<Image> monsterPartImages = new List<Image>();
 
+    private UDictionary<FlavourType, int> bobaTeaStats = new UDictionary<FlavourType, int>();
+    private Dictionary<BobaTeaPart, MonsterPart> bobaTeaStatsDict = new Dictionary<BobaTeaPart, MonsterPart>();
+
     private void Awake()
+    {
+        RefreshUI();
+
+        foreach (var image in monsterPartImages)
+        {
+            image.GetComponent<MonsterPartUIElement>().OnClickEvent.AddListener(AddMonsterPartToBoba);
+        }
+    }
+
+    private void AddMonsterPartToBoba(MonsterPartUIElement monsterPartUIElement)
+    {
+        if (bobaTeaStatsDict.ContainsKey(monsterPartUIElement.MonsterPart.BobaTeaPart))
+        {
+            Debug.Log("This part is already in the boba tea");
+        }
+        else
+        {
+            bobaTeaStatsDict.Add(monsterPartUIElement.MonsterPart.BobaTeaPart, monsterPartUIElement.MonsterPart);
+            monsterParts[monsterPartUIElement.MonsterPart] -= 1;
+            RefreshUI();
+            Debug.Log($"Added {monsterPartUIElement.MonsterPart.Name} to the boba tea");
+        }
+    }
+
+    private void RefreshUI()
     {
         for (int i = 0; i < monsterPartImages.Count && i < monsterParts.Keys.Count; i++)
         {
@@ -19,6 +47,7 @@ public class BobaTeaCreationManager : MonoBehaviour
             monsterPartImages[i].GetComponent<CanvasGroup>().blocksRaycasts = true;
             monsterPartImages[i].sprite = monsterParts.Keys[i].Sprite;
             monsterPartImages[i].GetComponentInChildren<TextMeshProUGUI>().text = monsterParts.Values[i].ToString();
+            monsterPartImages[i].GetComponent<MonsterPartUIElement>().SetMonsterPart(monsterParts.Keys[i]);
         }
 
         for (int i = monsterParts.Count; i < monsterPartImages.Count; i++)
