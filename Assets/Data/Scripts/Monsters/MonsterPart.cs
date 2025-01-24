@@ -6,6 +6,6 @@ public class MonsterPart : ScriptableObject
 {
     public string Name;
     public Sprite Sprite;
-    public Dictionary<FlavourType, int> Flavours;
+    public UDictionary<FlavourType, int> Flavours;
     public BobaTeaPart BobaTeaPart;
 }
