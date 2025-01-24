@@ -8,7 +8,8 @@ using UnityEngine.UI;
 public class BobaTeaCreationManager : MonoBehaviour
 {
     [SerializeField] private UDictionary<MonsterPart, int> monsterParts;
-    [SerializeField] private List<Image> monsterPartImages = new List<Image>();
+    [SerializeField] private List<Image> monsterPartImages;
+    [SerializeField] private UDictionary<FlavourType, Image> bobaTeaFlavoursBars;
 
     private UDictionary<FlavourType, int> bobaTeaStats = new UDictionary<FlavourType, int>();
     private Dictionary<BobaTeaPart, MonsterPart> bobaTeaStatsDict = new Dictionary<BobaTeaPart, MonsterPart>();
@@ -33,6 +34,16 @@ public class BobaTeaCreationManager : MonoBehaviour
         {
             bobaTeaStatsDict.Add(monsterPartUIElement.MonsterPart.BobaTeaPart, monsterPartUIElement.MonsterPart);
             monsterParts[monsterPartUIElement.MonsterPart] -= 1;
+
+            foreach (var flavour in monsterPartUIElement.MonsterPart.Flavours.Keys)
+            {
+                if (!bobaTeaStats.ContainsKey(flavour))
+                {
+                    bobaTeaStats.Add(flavour, 0);
+                }
+                bobaTeaStats[flavour] += monsterPartUIElement.MonsterPart.Flavours[flavour];
+            }
+
             RefreshUI();
             Debug.Log($"Added {monsterPartUIElement.MonsterPart.Name} to the boba tea");
         }
@@ -55,6 +66,16 @@ public class BobaTeaCreationManager : MonoBehaviour
             monsterPartImages[i].GetComponent<CanvasGroup>().alpha = 0f;
             monsterPartImages[i].GetComponent<CanvasGroup>().interactable = false;
             monsterPartImages[i].GetComponent<CanvasGroup>().blocksRaycasts = false;
+        }
+
+        // Refresh boba tea stats bars
+        foreach (var flavour in bobaTeaFlavoursBars.Keys)
+        {
+            if (!bobaTeaStats.ContainsKey(flavour))
+            {
+                bobaTeaStats.Add(flavour, 0);
+            }
+            bobaTeaFlavoursBars[flavour].fillAmount = (float)bobaTeaStats[flavour] / 5f;
         }
     }
 }

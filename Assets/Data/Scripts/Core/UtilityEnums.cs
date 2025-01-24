@@ -2,12 +2,10 @@ using UnityEngine;
 
 public enum FlavourType
 {
+    Bitter,
     Spicy,
     Sweet,
-    Salty,
-    Sour,
-    Bitter,
-    Umami
+    Salty
 }
 
 public enum BobaTeaPart
