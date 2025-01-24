@@ -3,6 +3,7 @@ using NUnit.Framework;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class LevelManager : MonoBehaviour
 {
@@ -25,6 +26,8 @@ public class LevelManager : MonoBehaviour
     public List<Sprite> customerSprites;
     public Sprite currentCustomerSprite;
 
+    public int currentDayDifficulty = 0;
+
 
     private void Awake()
     {
@@ -34,13 +37,19 @@ public class LevelManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        GenerateDay();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        //Debug
+        /*
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            GenerateCustomer(0);
+        }
+        */
     }
     private void GenerateDay()
     {
@@ -56,6 +65,7 @@ public class LevelManager : MonoBehaviour
 
     private void GenerateCustomer(int difficulty)
     {
+ 
         int choice = 0;
         if(difficulty == 0)
         {
@@ -77,13 +87,13 @@ public class LevelManager : MonoBehaviour
 
         //Hacer que se muestre el texto en una burbuja
         orderDescription = currentOrder.description;
+        Debug.Log(currentOrder.description);
 
         //Me guardo el flavoyr type para que luego sea el que pides
         orderFlavourType = currentOrder.flavours;
 
-
         //Poner el sprite customer
-        int count = Random.Range(0, hardOrders.Count);
+        int count = Random.Range(0, customerSprites.Count);
         currentCustomerSprite = customerSprites[count];
         GetComponent<SpriteRenderer>().sprite = currentCustomerSprite;
     }
@@ -93,8 +103,8 @@ public class LevelManager : MonoBehaviour
         bool correctOrder = false;
 
         correctOrder = CompareX(orderFlavourType, bubbaFlavours);
-
-       return correctOrder;
+        GenerateCustomer(currentDayDifficulty);
+        return correctOrder;
     }
 
 

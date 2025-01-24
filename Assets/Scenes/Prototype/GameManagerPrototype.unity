@@ -658,7 +658,7 @@ SpriteRenderer:
   m_Size: {x: 0.32, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &1472186601
@@ -673,7 +673,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2630ef5295f11c444a2696bdaeed10b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  easyOrders: []
+  easyOrders:
+  - {fileID: 11400000, guid: 32df5bf180e3899438778051ff910e47, type: 2}
+  - {fileID: 11400000, guid: ea942b33e09d981439226632a9280b3c, type: 2}
+  - {fileID: 11400000, guid: 53d4a60827ae8cc439bb972cf27ca4cc, type: 2}
+  - {fileID: 11400000, guid: a059be92eb462f74cbca427695a8bf04, type: 2}
+  - {fileID: 11400000, guid: acbd9af1c9c5c064ea4ca607ea6233d1, type: 2}
+  - {fileID: 11400000, guid: d9dd607bb6477fd41b2a8c64541878aa, type: 2}
+  - {fileID: 11400000, guid: 573f144393558c84c8463707d301848a, type: 2}
+  - {fileID: 11400000, guid: c860688ba997eba44bfab0056dc47369, type: 2}
+  - {fileID: 11400000, guid: 6304d93f2b842a8489da5bb907ce83ba, type: 2}
+  - {fileID: 11400000, guid: 26d00f2fba675274ca3ad56e349e4ba2, type: 2}
   mediumOrders: []
   hardOrders: []
   diasPorDificultad:
@@ -689,6 +699,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 04b4761cdcc838541ada5000541de55d, type: 3}
   - {fileID: 21300000, guid: eab4c5635fbbaee4e82ed0f7cb878ddf, type: 3}
   currentCustomerSprite: {fileID: 0}
+  currentDayDifficulty: 0
 --- !u!4 &1472186602
 Transform:
   m_ObjectHideFlags: 0
