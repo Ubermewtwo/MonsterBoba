@@ -59,6 +59,7 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] private int moneyPerDifficulty = 100;
     private int totalMoney = 0;
+    public int TotalMoney => totalMoney;
 
     [SerializeField] private EndOfDayUI endOfDayUI;
 
