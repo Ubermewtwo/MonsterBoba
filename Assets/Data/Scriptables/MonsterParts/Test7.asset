@@ -9,11 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 063bb6c44f8c35a49a7ea919d7379a9f, type: 3}
-  m_Name: Order1
+  m_Script: {fileID: 11500000, guid: 3a6f555fb5c0f834282103b123bf4c13, type: 3}
+  m_Name: Test7
   m_EditorClassIdentifier: 
-  difficulty: 1
-  flavours:
-    keys: 00000000010000000200000003000000
-    values: 03000000000000000000000001000000
-  description: Muy amargo y un poco salado
+  Name: Test7
+  Sprite: {fileID: 21300000, guid: 7f0be80a03ec03346b31100313d2f8d2, type: 3}
+  Flavours:
+    keys: 03000000
+    values: 02000000
+  BobaTeaPart: 0
