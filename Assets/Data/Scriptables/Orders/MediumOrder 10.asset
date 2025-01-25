@@ -15,5 +15,5 @@ MonoBehaviour:
   difficulty: 2
   flavours:
     keys: 00000000010000000200000003000000
-    values: 00000000000000000000000000000000
-  description: 
+    values: 00000000020000000200000002000000
+  description: Give me something quite sweet, salty and spicy, but don't overdo it

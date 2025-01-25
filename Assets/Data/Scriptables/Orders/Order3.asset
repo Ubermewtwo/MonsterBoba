@@ -15,5 +15,5 @@ MonoBehaviour:
   difficulty: 1
   flavours:
     keys: 00000000010000000200000003000000
-    values: 00000000010000000100000001000000
-  description: Quiero algo con toques salados, picantes y amargos
+    values: 01000000010000000000000001000000
+  description: I want something with salty, spicy and bitter touches
