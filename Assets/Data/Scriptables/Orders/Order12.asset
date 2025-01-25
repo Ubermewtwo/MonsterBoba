@@ -9,16 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a6f555fb5c0f834282103b123bf4c13, type: 3}
-  m_Name: MonsterPart
+  m_Script: {fileID: 11500000, guid: 063bb6c44f8c35a49a7ea919d7379a9f, type: 3}
+  m_Name: Order12
   m_EditorClassIdentifier: 
-  Name: 
-  Sprite: {fileID: 0}
-  Flavours:
-    keys: 
-    values: 
-  BobaTeaPart: 0
-  AddedToBobaSound:
-    volume: 1
-    pitch: 1
-    audioClipList: []
+  difficulty: 1
+  flavours:
+    keys: 00000000010000000200000003000000
+    values: 02000000010000000000000001000000
+  description: Give me a rather bitter tea with a spicy and salty touch

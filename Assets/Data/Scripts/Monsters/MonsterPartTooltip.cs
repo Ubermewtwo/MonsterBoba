@@ -18,13 +18,15 @@ public class MonsterPartTooltip : MonoBehaviour
     [SerializeField] private Color colorSalt;
 
     private Color color;
-
+    /*
+     * esto es para el sprite, pero da problemas cuando son dos asi que prefiero quitarlo por ahora
     [SerializeField] private Sprite spriteBitter;
     [SerializeField] private Sprite spriteSpicy;
     [SerializeField] private Sprite spriteSweet;
     [SerializeField] private Sprite spriteSalt;
 
     [SerializeField] private Image imageInTooltip;
+    */
 
     private void OnEnable()
     {
@@ -51,23 +53,23 @@ public class MonsterPartTooltip : MonoBehaviour
         {
             case FlavourType.Bitter:
                 color = colorBitter;
-                imageInTooltip.sprite = spriteBitter;
+                //imageInTooltip.sprite = spriteBitter;
                 break;
             case FlavourType.Spicy:
                 color = colorSpicy;
-                imageInTooltip.sprite = spriteSpicy;
+                //imageInTooltip.sprite = spriteSpicy;
                 break;
             case FlavourType.Sweet:
                 color = colorSweet;
-                imageInTooltip.sprite = spriteSweet;
+                //imageInTooltip.sprite = spriteSweet;
                 break;
             case FlavourType.Salty:
                 color = colorSalt;
-                imageInTooltip.sprite = spriteSalt;
+                //imageInTooltip.sprite = spriteSalt;
                 break;
             default:
                 color = colorSweet;
-                imageInTooltip.sprite = spriteSweet;
+                //imageInTooltip.sprite = spriteSweet;
                 break;
         }
     }
