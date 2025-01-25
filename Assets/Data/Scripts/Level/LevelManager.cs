@@ -1,12 +1,17 @@
-using JetBrains.Annotations;
-using NUnit.Framework;
-using System.CodeDom.Compiler;
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
+
+[Serializable]
+public class NPCVoices
+{
+    public AudioClipList OrderSounds;
+    public AudioClipList CorrectOrderSounds;
+    public AudioClipList WrongOrderSounds;
+}
 
 public class LevelManager : MonoBehaviour
 {
@@ -33,7 +38,9 @@ public class LevelManager : MonoBehaviour
     private string orderDescription;
     public UDictionary<FlavourType, int> orderFlavourType;
     public List<Sprite> customerSprites;
-    public Sprite currentCustomerSprite;
+    [SerializeField] private List<NPCVoices> npcVoices;
+    private Sprite currentCustomerSprite;
+    private NPCVoices currentNPCVoices;
 
     private int currentDayDifficulty = 0;
     private int currentDayNumberOfCustomers = 0;
@@ -60,6 +67,7 @@ public class LevelManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -146,7 +154,7 @@ public class LevelManager : MonoBehaviour
         int choice;
         do
         {
-            choice = Random.Range(0, currentDayOrders.Count);
+            choice = UnityEngine.Random.Range(0, currentDayOrders.Count);
         }
         while (currentDayOrders[choice] == currentOrder);
 
@@ -165,11 +173,14 @@ public class LevelManager : MonoBehaviour
         int count;
         do
         {
-            count = Random.Range(0, customerSprites.Count);
+            count = UnityEngine.Random.Range(0, customerSprites.Count);
         }
         while (customerSprites[count] == currentCustomerSprite);
 
         currentCustomerSprite = customerSprites[count];
+        currentNPCVoices = npcVoices[count];
+        currentNPCVoices.OrderSounds.PlayAtPointRandom(transform.position);
+
         GetComponent<SpriteRenderer>().sprite = currentCustomerSprite;
 
         customerDialog.SetBubbleMessage(orderDescription);
@@ -192,6 +203,11 @@ public class LevelManager : MonoBehaviour
         {
             customersServed++;
             moneyEarned += currentOrder.difficulty * moneyPerDifficulty;
+            currentNPCVoices.CorrectOrderSounds.PlayAtPointRandom(transform.position);
+        }
+        else
+        {
+            currentNPCVoices.WrongOrderSounds.PlayAtPointRandom(transform.position);
         }
 
         return correctOrder;

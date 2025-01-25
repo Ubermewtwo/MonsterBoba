@@ -18,3 +18,8 @@ MonoBehaviour:
     keys: 00000000
     values: 01000000
   BobaTeaPart: 2
+  AddedToBobaSound:
+    volume: 1
+    pitch: 1
+    audioClipList:
+    - {fileID: 8300000, guid: 58e5f446a41c76e40877b94075c6cfae, type: 3}
