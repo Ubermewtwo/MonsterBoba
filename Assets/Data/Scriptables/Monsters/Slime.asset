@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d6522402d7822941b0a692811bb8766, type: 3}
   m_Name: Slime
   m_EditorClassIdentifier: 
-  Name: 
-  Sprite: {fileID: 0}
+  Name: Slime
+  MonsterSprite: {fileID: 21300000, guid: 04b4761cdcc838541ada5000541de55d, type: 3}
+  EggSprite: {fileID: 21300000, guid: bcd819d84727e474799e41e6773c7298, type: 3}
+  EggColor: {r: 0.681353, g: 1, b: 0, a: 1}
   MonsterParts:
-    keys: []
-    values: 
+    keys:
+    - {fileID: 11400000, guid: 1ce277659e923444c9a95814338cd7b3, type: 2}
+    values: 05000000

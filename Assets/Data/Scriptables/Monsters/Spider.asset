@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d6522402d7822941b0a692811bb8766, type: 3}
   m_Name: Spider
   m_EditorClassIdentifier: 
-  Name: 
-  Sprite: {fileID: 0}
+  Name: Spider
+  MonsterSprite: {fileID: 21300000, guid: d5685ac214c57d84fa3bbe807fe8ce05, type: 3}
+  EggSprite: {fileID: 21300000, guid: bcd819d84727e474799e41e6773c7298, type: 3}
+  EggColor: {r: 0.23074837, g: 0.14475608, b: 0.3056603, a: 1}
   MonsterParts:
-    keys: []
-    values: 
+    keys:
+    - {fileID: 11400000, guid: ec5d026763f223046bbb66313fd76180, type: 2}
+    values: 08000000
