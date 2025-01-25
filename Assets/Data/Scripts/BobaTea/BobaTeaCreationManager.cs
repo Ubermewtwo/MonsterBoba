@@ -110,7 +110,7 @@ public class BobaTeaCreationManager : MonoBehaviour
 
     public List<MonsterPart> GetUnlockedMonsterParts(int day)
     {
-        return monsterParts.Where(x => x.Value <= day).Select(x => x.Key).ToList();
+        return monsterParts.Where(x => x.Value == day).Select(x => x.Key).ToList();
     }
 
     private void UnlockMonsterPart(MonsterPart monsterPart, int i, BobaTeaPart bobaTeaPart)
