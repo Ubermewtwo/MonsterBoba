@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
+[DefaultExecutionOrder(-1)]
 public class BobaTeaCreationManager : MonoBehaviour
 {
     [SerializeField] private UDictionary<MonsterPart, int> monsterParts;
@@ -35,6 +36,39 @@ public class BobaTeaCreationManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        LevelManager.Instance.OnDayChanged.AddListener(SetUnlockedMonsterParts);
+    }
+
+    private void SetUnlockedMonsterParts(Day day)
+    {
+        int index = 0;
+        foreach (var pair in monsterParts.Where(x => x.Value <= day.day))
+        {
+            UnlockMonsterPart(pair.Key, index);
+            index++;
+        }
+
+        for (int i = index; i < monsterPartImages.Count; i++)
+        {
+            monsterPartImages[i].GetComponent<CanvasGroup>().alpha = 0f;
+            monsterPartImages[i].GetComponent<CanvasGroup>().interactable = false;
+            monsterPartImages[i].GetComponent<CanvasGroup>().blocksRaycasts = false;
+        }
+    }
+
+    private void UnlockMonsterPart(MonsterPart monsterPart, int i)
+    {
+        if (i >= monsterPartImages.Count) Debug.Log("Out of bounds, not enough monster part images");
+
+        monsterPartImages[i].GetComponent<CanvasGroup>().alpha = 1f;
+        monsterPartImages[i].GetComponent<CanvasGroup>().interactable = true;
+        monsterPartImages[i].GetComponent<CanvasGroup>().blocksRaycasts = true;
+        monsterPartImages[i].sprite = monsterPart.Sprite;
+        monsterPartImages[i].GetComponent<MonsterPartUIElement>().SetMonsterPart(monsterPart);
+    }
+
     private void AddMonsterPartToBoba(MonsterPartUIElement monsterPartUIElement)
     {
         if (bobaTeaPartsAddedDict.ContainsKey(monsterPartUIElement.MonsterPart.BobaTeaPart))
@@ -44,12 +78,6 @@ public class BobaTeaCreationManager : MonoBehaviour
         else
         {
             bobaTeaPartsAddedDict.Add(monsterPartUIElement.MonsterPart.BobaTeaPart, monsterPartUIElement.MonsterPart);
-            monsterParts[monsterPartUIElement.MonsterPart] -= 1;
-
-            if (monsterParts[monsterPartUIElement.MonsterPart] == 0)
-            {
-                monsterParts.Remove(monsterPartUIElement.MonsterPart);
-            }
 
             foreach (var flavour in monsterPartUIElement.MonsterPart.Flavours.Keys)
             {
@@ -57,7 +85,7 @@ public class BobaTeaCreationManager : MonoBehaviour
                 {
                     bobaTeaStats.Add(flavour, 0);
                 }
-                bobaTeaStats[flavour] += monsterPartUIElement.MonsterPart.Flavours[flavour];
+                bobaTeaStats[flavour] = Mathf.Min (bobaTeaStats[flavour] + monsterPartUIElement.MonsterPart.Flavours[flavour], 5);
             }
 
             RefreshUI();
@@ -74,43 +102,12 @@ public class BobaTeaCreationManager : MonoBehaviour
 
     public void SendBoba()
     {
-        //Get game manager instance and call its SendBobaTea method
+        LevelManager.Instance.ReciveBubba(bobaTeaStats);
         DiscardBoba();
-        Debug.Log("Sent boba tea");
-    }
-
-    public void AddMonsterPartToStorage(MonsterPart monsterPart)
-    {
-        if (monsterParts.ContainsKey(monsterPart))
-        {
-            monsterParts[monsterPart] += 1;
-        }
-        else
-        {
-            monsterParts.Add(monsterPart, 1);
-        }
-        RefreshUI();
     }
 
     private void RefreshUI()
     {
-        for (int i = 0; i < monsterPartImages.Count && i < monsterParts.Keys.Count; i++)
-        {
-            monsterPartImages[i].GetComponent<CanvasGroup>().alpha = 1f;
-            monsterPartImages[i].GetComponent<CanvasGroup>().interactable = true;
-            monsterPartImages[i].GetComponent<CanvasGroup>().blocksRaycasts = true;
-            monsterPartImages[i].sprite = monsterParts.Keys[i].Sprite;
-            monsterPartImages[i].GetComponentInChildren<TextMeshProUGUI>().text = monsterParts.Values[i].ToString();
-            monsterPartImages[i].GetComponent<MonsterPartUIElement>().SetMonsterPart(monsterParts.Keys[i]);
-        }
-
-        for (int i = monsterParts.Count; i < monsterPartImages.Count; i++)
-        {
-            monsterPartImages[i].GetComponent<CanvasGroup>().alpha = 0f;
-            monsterPartImages[i].GetComponent<CanvasGroup>().interactable = false;
-            monsterPartImages[i].GetComponent<CanvasGroup>().blocksRaycasts = false;
-        }
-
         // Refresh boba tea stats bars
         foreach (var flavour in bobaTeaFlavoursBars.Keys)
         {
