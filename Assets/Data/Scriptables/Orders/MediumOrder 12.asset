@@ -15,5 +15,6 @@ MonoBehaviour:
   difficulty: 2
   flavours:
     keys: 00000000010000000200000003000000
-    values: 00000000000000000000000000000000
-  description: 
+    values: 02000000030000000000000001000000
+  description: Give me a very spicy tea, with a bit of bitterness and a pinch of
+    salt

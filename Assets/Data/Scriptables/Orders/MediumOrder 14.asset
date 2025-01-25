@@ -15,5 +15,5 @@ MonoBehaviour:
   difficulty: 2
   flavours:
     keys: 00000000010000000200000003000000
-    values: 00000000000000000000000000000000
-  description: 
+    values: 03000000000000000200000001000000
+  description: Give me a very bitter drink, quite sweet and a little salty
