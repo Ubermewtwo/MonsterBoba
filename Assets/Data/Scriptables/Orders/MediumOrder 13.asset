@@ -15,5 +15,5 @@ MonoBehaviour:
   difficulty: 2
   flavours:
     keys: 00000000010000000200000003000000
-    values: 00000000000000000000000000000000
-  description: 
+    values: 02000000000000000300000003000000
+  description: A very salty and very sweet tea, with some bitterness too

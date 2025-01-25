@@ -15,5 +15,5 @@ MonoBehaviour:
   difficulty: 2
   flavours:
     keys: 00000000010000000200000003000000
-    values: 00000000000000000000000000000000
-  description: 
+    values: 02000000020000000200000001000000
+  description: I want one that is bitter, spicy and sweet, with a pinch of salt
