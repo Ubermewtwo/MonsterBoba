@@ -8,6 +8,8 @@ using UnityEngine.UI;
 [DefaultExecutionOrder(-1)]
 public class BobaTeaCreationManager : MonoBehaviour
 {
+    public static BobaTeaCreationManager Instance { get; private set; }
+
     [SerializeField] private UDictionary<MonsterPart, int> monsterParts;
     [SerializeField] private Transform monsterPartContainer;
     private List<Image> monsterPartImages = new List<Image>();
@@ -20,6 +22,9 @@ public class BobaTeaCreationManager : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);
+
         foreach (Transform child in monsterPartContainer)
         {
             foreach (Transform grandChild in child)
@@ -58,6 +63,11 @@ public class BobaTeaCreationManager : MonoBehaviour
         }
     }
 
+    public List<MonsterPart> GetUnlockedMonsterParts(int day)
+    {
+        return monsterParts.Where(x => x.Value <= day).Select(x => x.Key).ToList();
+    }
+
     private void UnlockMonsterPart(MonsterPart monsterPart, int i)
     {
         if (i >= monsterPartImages.Count) Debug.Log("Out of bounds, not enough monster part images");
@@ -85,7 +95,7 @@ public class BobaTeaCreationManager : MonoBehaviour
                 {
                     bobaTeaStats.Add(flavour, 0);
                 }
-                bobaTeaStats[flavour] = Mathf.Min (bobaTeaStats[flavour] + monsterPartUIElement.MonsterPart.Flavours[flavour], 5);
+                bobaTeaStats[flavour] = Mathf.Min (bobaTeaStats[flavour] + monsterPartUIElement.MonsterPart.Flavours[flavour], 3);
             }
 
             RefreshUI();
@@ -115,7 +125,7 @@ public class BobaTeaCreationManager : MonoBehaviour
             {
                 bobaTeaStats.Add(flavour, 0);
             }
-            bobaTeaFlavoursBars[flavour].fillAmount = (float)bobaTeaStats[flavour] / 5f;
+            bobaTeaFlavoursBars[flavour].fillAmount = (float)bobaTeaStats[flavour] / 3f;
         }
 
         if (bobaTeaPartsAddedDict.Count > 0)

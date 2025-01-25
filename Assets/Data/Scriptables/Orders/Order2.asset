@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 063bb6c44f8c35a49a7ea919d7379a9f, type: 3}
   m_Name: Order2
   m_EditorClassIdentifier: 
-  difficulty: 0
+  difficulty: 1
   flavours:
     keys: 00000000010000000200000003000000
     values: 00000000010000000000000003000000
