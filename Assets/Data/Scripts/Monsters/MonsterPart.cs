@@ -8,4 +8,5 @@ public class MonsterPart : ScriptableObject
     public Sprite Sprite;
     public UDictionary<FlavourType, int> Flavours;
     public BobaTeaPart BobaTeaPart;
+    public AudioClipList AddedToBobaSound;
 }
