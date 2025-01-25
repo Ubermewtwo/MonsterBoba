@@ -9,7 +9,7 @@ using UnityEngine.InputSystem;
 
 public class LevelManager : MonoBehaviour
 {
-    public static LevelManager Instance;
+    public static LevelManager Instance { get; private set; }
 
     [SerializeField]
     private List<Order> easyOrders;
@@ -25,7 +25,7 @@ public class LevelManager : MonoBehaviour
     private Day currentDay;
     private int currentDayCounter = 0;
 
-    public UnityEvent<Day> OnDayChanged;
+    public UnityEvent<Day> OnDayChanged = new UnityEvent<Day>(); //evento>
 
     private Order currentOrder;
 
@@ -36,11 +36,13 @@ public class LevelManager : MonoBehaviour
 
     private int currentDayDifficulty = 0;
     private int currentDayNumberOfCustomers = 0;
+    public float currentDayTime = 0f;
+    public bool hasDayEnded = false;
 
     [SerializeField]
     private CustomerDialog customerDialog;
 
-    [SerializeField] private TextMeshProUGUI waitingCustomersText; //texto
+    [SerializeField] private TextMeshProUGUI remainingTimeText; //texto
     private void Awake()
     {
         if (Instance == null)
@@ -70,6 +72,19 @@ public class LevelManager : MonoBehaviour
             ReciveBubba(new UDictionary<FlavourType, int>());
         }
 
+        if (hasDayEnded)
+            return;
+
+        currentDayTime -=Time.deltaTime;
+        UpdateTimerText();
+
+        if (currentDayTime <= 0)
+        {
+            currentDayTime = 0;
+            EndDay();
+        }
+
+
     }
     private void GenerateDay()
     {
@@ -80,8 +95,11 @@ public class LevelManager : MonoBehaviour
             return;
         }
 
+        hasDayEnded = false;
+
         currentDay = days[currentDayCounter];
         currentDayNumberOfCustomers = currentDay.numberOfCustomers;
+        currentDayTime = currentDay.dayTimeInSeconds;
 
         currentDayOrders.Clear();
 
@@ -102,11 +120,13 @@ public class LevelManager : MonoBehaviour
     private void GenerateCustomer()
     {
 
+        /*
         if(currentDayNumberOfCustomers <= 0)
         {
             EndDay();
             return;
         }
+        */
  
         int choice = choice = Random.Range(0, currentDayOrders.Count);
         currentOrder = currentDayOrders[choice];
@@ -127,7 +147,7 @@ public class LevelManager : MonoBehaviour
 
         customerDialog.SetBubbleMessage(orderDescription);
         currentDayNumberOfCustomers--;
-        UpdateWaitingCustomersText();
+        
 
     }
 
@@ -140,8 +160,7 @@ public class LevelManager : MonoBehaviour
 
         //esto habra que hacerlo despues, pero primero quiero unir las cosas
         GenerateCustomer();
-
-        Debug.Log($"Correcto? {correctOrder}");
+        Debug.Log(correctOrder);
 
         return correctOrder;
     }
@@ -150,16 +169,29 @@ public class LevelManager : MonoBehaviour
     {
         //codigo de final de dia 
 
+        hasDayEnded = true;
+
         //Esto realmente se llamara cuando acabe la parte de final de dia pero por ahora la pongo aqui para probar
         Debug.Log("Acaba el dia");
         GenerateDay();
 
     }
 
+    public void UpdateTimerText()
+    {
+        int minutes = Mathf.FloorToInt(currentDayTime / 60F);
+        int seconds = Mathf.FloorToInt(currentDayTime - minutes * 60);
+
+        string timeText = string.Format("{0:0}:{1:00}", minutes, seconds);
+        remainingTimeText.text = timeText;
+    }
+
+    /* deprecated
     public void UpdateWaitingCustomersText()
     {
         waitingCustomersText.text = currentDayNumberOfCustomers.ToString();
     }
+    */
 
     //en principio esto compara ambos diccionarios y devuelve si son iguales, si lo son devuelve true, si no, false
     public bool CompareX<TKey, TValue>(
