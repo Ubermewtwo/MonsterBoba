@@ -20,17 +20,48 @@ public class TittleSceneMethods : MonoBehaviour
     public void LoadGameScene()
     {
         if (isLoadingScene) return;
-        Invoke("LoadScene", 1f);
+        isLoadingScene = true;
+        Invoke("LoadGameScenelater", 1f);
     }
 
-    private void LoadScene()
+    private void LoadGameScenelater()
     {
         SceneManager.LoadScene("GameScene");
+    }
+
+    public void LoadTittleScene()
+    {
+        if (isLoadingScene) return;
+        isLoadingScene = true;
+        if (LevelManager.Instance != null)
+        {
+            Destroy(LevelManager.Instance.gameObject);
+        }
+        Invoke("LoadTittleScenelater", 1f);
+    }
+
+    private void LoadTittleScenelater()
+    {
+        SceneManager.LoadScene("TittleScene");
     }
 
     public void ExitGamePlease()
     {
         if (Application.isEditor) UnityEditor.EditorApplication.isPlaying = false;
         else Application.Quit();
+    }
+
+    public void ShowCanvasGroup(CanvasGroup canvasGroup)
+    {
+        canvasGroup.alpha = 1;
+        canvasGroup.interactable = true;
+        canvasGroup.blocksRaycasts = true;
+    }
+
+    public void HideCanvasGroup(CanvasGroup canvasGroup)
+    {
+        canvasGroup.alpha = 0;
+        canvasGroup.interactable = false;
+        canvasGroup.blocksRaycasts = false;
     }
 }
