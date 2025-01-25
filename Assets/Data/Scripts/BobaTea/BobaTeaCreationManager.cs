@@ -158,7 +158,8 @@ public class BobaTeaCreationManager : MonoBehaviour
             }
 
             RefreshUI();
-            Debug.Log($"Added {monsterPartUIElement.MonsterPart.Name} to the boba tea");
+
+            monsterPartUIElement.MonsterPart.AddedToBobaSound.PlayAtPointRandom(transform.position);
         }
     }
 
