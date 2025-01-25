@@ -3827,7 +3827,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: f7e4b29feadec1b44b890a88f8d6d384, type: 2}
     - {fileID: 11400000, guid: 229e5bd431eb0c346b6939d0f99b316e, type: 2}
     values: 010000000100000001000000010000000100000001000000010000000100000001000000
-  monsterPartContainer: {fileID: 477026532}
+  monsterPartsContainer: {fileID: 477026532}
   bobaTeaFlavoursBars:
     keys: 00000000010000000200000003000000
     values:
