@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
@@ -43,6 +44,8 @@ public class LevelManager : MonoBehaviour
     private CustomerDialog customerDialog;
 
     [SerializeField] private TextMeshProUGUI remainingTimeText; //texto
+    [SerializeField] private Image remainingTimeImage;
+
     private void Awake()
     {
         if (Instance == null)
@@ -184,6 +187,7 @@ public class LevelManager : MonoBehaviour
 
         string timeText = string.Format("{0:0}:{1:00}", minutes, seconds);
         remainingTimeText.text = timeText;
+        remainingTimeImage.fillAmount = currentDayTime / currentDay.dayTimeInSeconds;
     }
 
     /* deprecated
