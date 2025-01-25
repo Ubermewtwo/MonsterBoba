@@ -10107,7 +10107,82 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 5d1818a954fddf446a953cc734a37caf, type: 3}
   - {fileID: 21300000, guid: 826c0459a57accd4d8f09fe74d9bb517, type: 3}
   - {fileID: 21300000, guid: 5d54e4586c82b1b46afdcc21bd79bacc, type: 3}
-  currentCustomerSprite: {fileID: 0}
+  npcVoices:
+  - OrderSounds:
+      volume: 1
+      pitch: 1
+      audioClipList:
+      - {fileID: 8300000, guid: e0fa4ddb11596814db8ef6de224c43a0, type: 3}
+    CorrectOrderSounds:
+      volume: 1
+      pitch: 1
+      audioClipList:
+      - {fileID: 8300000, guid: be1724bbaa135d146a61d3f6d02ff9f1, type: 3}
+    WrongOrderSounds:
+      volume: 1
+      pitch: 1
+      audioClipList:
+      - {fileID: 8300000, guid: 3daeefb7fa1327641bed2be254432713, type: 3}
+  - OrderSounds:
+      volume: 1
+      pitch: 1
+      audioClipList:
+      - {fileID: 8300000, guid: cfa69aa2ebd88f84caefcd223734b254, type: 3}
+    CorrectOrderSounds:
+      volume: 1
+      pitch: 1
+      audioClipList:
+      - {fileID: 8300000, guid: 1d43c078162ee544a9c18684c155d4b9, type: 3}
+    WrongOrderSounds:
+      volume: 1
+      pitch: 1
+      audioClipList:
+      - {fileID: 8300000, guid: 6f3931a2f429e9443839d8a4b4770e28, type: 3}
+  - OrderSounds:
+      volume: 1
+      pitch: 1
+      audioClipList:
+      - {fileID: 8300000, guid: 4dbc74ff6692f37498fd06241c650a1d, type: 3}
+    CorrectOrderSounds:
+      volume: 1
+      pitch: 1
+      audioClipList:
+      - {fileID: 8300000, guid: bb5d6d9e273301542b2bc4f461ba7c48, type: 3}
+    WrongOrderSounds:
+      volume: 1
+      pitch: 1
+      audioClipList:
+      - {fileID: 8300000, guid: dc6254bef76924e42bd5fe3c7b36823d, type: 3}
+  - OrderSounds:
+      volume: 1
+      pitch: 1
+      audioClipList:
+      - {fileID: 8300000, guid: de756693ebe9ec94d994b7b38f3776e3, type: 3}
+    CorrectOrderSounds:
+      volume: 1
+      pitch: 1
+      audioClipList:
+      - {fileID: 8300000, guid: ac063ce6548aaa449a0ed9368f64f88a, type: 3}
+    WrongOrderSounds:
+      volume: 1
+      pitch: 1
+      audioClipList:
+      - {fileID: 8300000, guid: 30edee0c82d85204a9a5e4848faec1fd, type: 3}
+  - OrderSounds:
+      volume: 1
+      pitch: 1
+      audioClipList:
+      - {fileID: 8300000, guid: 87578efc54f6ecb4ba8623cd8e95a84c, type: 3}
+    CorrectOrderSounds:
+      volume: 1
+      pitch: 1
+      audioClipList:
+      - {fileID: 8300000, guid: 9939065ff0dc5134ea058f1dc41a5af6, type: 3}
+    WrongOrderSounds:
+      volume: 1
+      pitch: 1
+      audioClipList:
+      - {fileID: 8300000, guid: 809c0eb7ddb5a5747a5003a021b019a8, type: 3}
   currentDayTime: 0
   hasDayEnded: 0
   customerDialog: {fileID: 1385503095}
