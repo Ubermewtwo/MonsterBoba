@@ -6,11 +6,15 @@ public class SoundFXManager : MonoBehaviour
 {
     public static SoundFXManager Instance { get; private set; }
 
-    [SerializeField] private AudioSource soundFXObject;
+    [SerializeField] private GameObject soundFXObject;
 
     private void Awake()
     {
-        if (Instance == null) Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
         else Destroy(gameObject);
     }
 
@@ -19,7 +23,7 @@ public class SoundFXManager : MonoBehaviour
         float clampedVolume = Mathf.Clamp01(volume);
         float clampedPitch = Mathf.Clamp(pitch, -3, 3);
 
-        AudioSource audioSource = Instantiate(soundFXObject, spawnPosition, Quaternion.identity, gameObject.transform);
+        AudioSource audioSource = Instantiate(soundFXObject, spawnPosition, Quaternion.identity, gameObject.transform).GetComponent<AudioSource>();
         audioSource.clip = audioClip;
         audioSource.volume = clampedVolume;
         audioSource.pitch = clampedPitch;
