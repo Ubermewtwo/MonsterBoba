@@ -8,14 +8,25 @@ using UnityEngine.UI;
 public class BobaTeaCreationManager : MonoBehaviour
 {
     [SerializeField] private UDictionary<MonsterPart, int> monsterParts;
-    [SerializeField] private List<Image> monsterPartImages;
+    [SerializeField] private Transform monsterPartContainer;
+    private List<Image> monsterPartImages = new List<Image>();
     [SerializeField] private UDictionary<FlavourType, Image> bobaTeaFlavoursBars;
+    [SerializeField] private CanvasGroup sendBobaButton;
+    [SerializeField] private CanvasGroup discardBobaButton;
 
     private UDictionary<FlavourType, int> bobaTeaStats = new UDictionary<FlavourType, int>();
-    private Dictionary<BobaTeaPart, MonsterPart> bobaTeaStatsDict = new Dictionary<BobaTeaPart, MonsterPart>();
+    private Dictionary<BobaTeaPart, MonsterPart> bobaTeaPartsAddedDict = new Dictionary<BobaTeaPart, MonsterPart>();
 
     private void Awake()
     {
+        foreach (Transform child in monsterPartContainer)
+        {
+            foreach (Transform grandChild in child)
+            {
+                monsterPartImages.Add(grandChild.GetComponent<Image>());
+            }
+        }
+
         RefreshUI();
 
         foreach (var image in monsterPartImages)
@@ -26,14 +37,19 @@ public class BobaTeaCreationManager : MonoBehaviour
 
     private void AddMonsterPartToBoba(MonsterPartUIElement monsterPartUIElement)
     {
-        if (bobaTeaStatsDict.ContainsKey(monsterPartUIElement.MonsterPart.BobaTeaPart))
+        if (bobaTeaPartsAddedDict.ContainsKey(monsterPartUIElement.MonsterPart.BobaTeaPart))
         {
             Debug.Log("This part is already in the boba tea");
         }
         else
         {
-            bobaTeaStatsDict.Add(monsterPartUIElement.MonsterPart.BobaTeaPart, monsterPartUIElement.MonsterPart);
+            bobaTeaPartsAddedDict.Add(monsterPartUIElement.MonsterPart.BobaTeaPart, monsterPartUIElement.MonsterPart);
             monsterParts[monsterPartUIElement.MonsterPart] -= 1;
+
+            if (monsterParts[monsterPartUIElement.MonsterPart] == 0)
+            {
+                monsterParts.Remove(monsterPartUIElement.MonsterPart);
+            }
 
             foreach (var flavour in monsterPartUIElement.MonsterPart.Flavours.Keys)
             {
@@ -47,6 +63,33 @@ public class BobaTeaCreationManager : MonoBehaviour
             RefreshUI();
             Debug.Log($"Added {monsterPartUIElement.MonsterPart.Name} to the boba tea");
         }
+    }
+
+    public void DiscardBoba()
+    {
+        bobaTeaPartsAddedDict.Clear();
+        bobaTeaStats.Clear();
+        RefreshUI();
+    }
+
+    public void SendBoba()
+    {
+        //Get game manager instance and call its SendBobaTea method
+        DiscardBoba();
+        Debug.Log("Sent boba tea");
+    }
+
+    public void AddMonsterPartToStorage(MonsterPart monsterPart)
+    {
+        if (monsterParts.ContainsKey(monsterPart))
+        {
+            monsterParts[monsterPart] += 1;
+        }
+        else
+        {
+            monsterParts.Add(monsterPart, 1);
+        }
+        RefreshUI();
     }
 
     private void RefreshUI()
@@ -76,6 +119,32 @@ public class BobaTeaCreationManager : MonoBehaviour
                 bobaTeaStats.Add(flavour, 0);
             }
             bobaTeaFlavoursBars[flavour].fillAmount = (float)bobaTeaStats[flavour] / 5f;
+        }
+
+        if (bobaTeaPartsAddedDict.Count > 0)
+        {
+            discardBobaButton.alpha = 1f;
+            discardBobaButton.interactable = true;
+            discardBobaButton.blocksRaycasts = true;
+        }
+        else
+        {
+            discardBobaButton.alpha = 0f;
+            discardBobaButton.interactable = false;
+            discardBobaButton.blocksRaycasts = false;
+        }
+
+        if (bobaTeaPartsAddedDict.Count == 3)
+        {
+            sendBobaButton.alpha = 1f;
+            sendBobaButton.interactable = true;
+            sendBobaButton.blocksRaycasts = true;
+        }
+        else
+        {
+            sendBobaButton.alpha = 0f;
+            sendBobaButton.interactable = false;
+            sendBobaButton.blocksRaycasts = false;
         }
     }
 }

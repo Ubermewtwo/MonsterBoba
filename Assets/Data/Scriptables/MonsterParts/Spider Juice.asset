@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a6f555fb5c0f834282103b123bf4c13, type: 3}
   m_Name: Spider Juice
   m_EditorClassIdentifier: 
-  Name: Spider Eyes
-  Sprite: {fileID: 21300000, guid: d5685ac214c57d84fa3bbe807fe8ce05, type: 3}
+  Name: Spider Juice
+  Sprite: {fileID: 21300000, guid: 04b4761cdcc838541ada5000541de55d, type: 3}
   Flavours:
-    keys: 0000000002000000
+    keys: 0100000003000000
     values: 0100000002000000
-  BobaTeaPart: 0
+  BobaTeaPart: 1
