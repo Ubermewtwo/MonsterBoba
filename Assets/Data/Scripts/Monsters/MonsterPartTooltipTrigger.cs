@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class MonsterPartUIElement : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
-    private MonsterPart monsterPart;
+    private MonsterPart monsterPart = null;
     public MonsterPart MonsterPart => monsterPart;
 
     public UnityEvent<MonsterPartUIElement> OnClickEvent;

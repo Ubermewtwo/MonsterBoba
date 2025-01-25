@@ -10,9 +10,15 @@ public class BobaTeaCreationManager : MonoBehaviour
 {
     public static BobaTeaCreationManager Instance { get; private set; }
 
-    [SerializeField] private UDictionary<MonsterPart, int> monsterParts;
-    [SerializeField] private Transform monsterPartContainer;
-    private List<Image> monsterPartImages = new List<Image>();
+    [SerializeField] private UDictionary<MonsterPart, int> monsterParts = new();
+    //[SerializeField] private Transform monsterPartContainer;
+    //private List<Image> monsterPartImages = new List<Image>();
+
+    [SerializeField] private Transform monsterPartsContainer;
+    private List<MonsterPartUIElement> toppingsMonsterParts = new();
+    private List<MonsterPartUIElement> teaMonsterParts = new();
+    private List<MonsterPartUIElement> ballsMonsterParts = new();
+
     [SerializeField] private UDictionary<FlavourType, Image> bobaTeaFlavoursBars;
     [SerializeField] private CanvasGroup sendBobaButton;
     [SerializeField] private CanvasGroup discardBobaButton;
@@ -25,20 +31,25 @@ public class BobaTeaCreationManager : MonoBehaviour
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
 
-        foreach (Transform child in monsterPartContainer)
+        foreach (Transform child in monsterPartsContainer.GetChild(0))
         {
-            foreach (Transform grandChild in child)
-            {
-                monsterPartImages.Add(grandChild.GetComponent<Image>());
-            }
+            toppingsMonsterParts.Add(child.GetComponent<MonsterPartUIElement>());
+            child.GetComponent<MonsterPartUIElement>().OnClickEvent.AddListener(AddMonsterPartToBoba);
+        }
+
+        foreach (Transform child in monsterPartsContainer.GetChild(1))
+        {
+            teaMonsterParts.Add(child.GetComponent<MonsterPartUIElement>());
+            child.GetComponent<MonsterPartUIElement>().OnClickEvent.AddListener(AddMonsterPartToBoba);
+        }
+
+        foreach (Transform child in monsterPartsContainer.GetChild(2))
+        {
+            ballsMonsterParts.Add(child.GetComponent<MonsterPartUIElement>());
+            child.GetComponent<MonsterPartUIElement>().OnClickEvent.AddListener(AddMonsterPartToBoba);
         }
 
         RefreshUI();
-
-        foreach (var image in monsterPartImages)
-        {
-            image.GetComponent<MonsterPartUIElement>().OnClickEvent.AddListener(AddMonsterPartToBoba);
-        }
     }
 
     private void Start()
@@ -48,18 +59,52 @@ public class BobaTeaCreationManager : MonoBehaviour
 
     private void SetUnlockedMonsterParts(Day day)
     {
-        int index = 0;
+        int toppingsIndex = 0;
+        int teaIndex = 0;
+        int ballsIndex = 0;
         foreach (var pair in monsterParts.Where(x => x.Value <= day.day))
         {
-            UnlockMonsterPart(pair.Key, index);
-            index++;
+            int chosenIndex = 0;
+            switch (pair.Key.BobaTeaPart)
+            {
+                case BobaTeaPart.Toppings:
+                    chosenIndex = toppingsIndex;
+                    toppingsIndex++;
+                    break;
+                case BobaTeaPart.Tea:
+                    chosenIndex = teaIndex;
+                    teaIndex++;
+                    break;
+                case BobaTeaPart.Balls:
+                    chosenIndex = ballsIndex;
+                    ballsIndex++;
+                    break;
+            }
+            UnlockMonsterPart(pair.Key, chosenIndex, pair.Key.BobaTeaPart);
         }
 
-        for (int i = index; i < monsterPartImages.Count; i++)
+        foreach (var monsterPartImage in toppingsMonsterParts)
         {
-            monsterPartImages[i].GetComponent<CanvasGroup>().alpha = 0f;
-            monsterPartImages[i].GetComponent<CanvasGroup>().interactable = false;
-            monsterPartImages[i].GetComponent<CanvasGroup>().blocksRaycasts = false;
+            if (monsterPartImage.MonsterPart != null) continue;
+            monsterPartImage.GetComponent<CanvasGroup>().alpha = 0f;
+            monsterPartImage.GetComponent<CanvasGroup>().interactable = false;
+            monsterPartImage.GetComponent<CanvasGroup>().blocksRaycasts = false;
+        }
+
+        foreach (var monsterPartImage in teaMonsterParts)
+        {
+            if (monsterPartImage.MonsterPart != null) continue;
+            monsterPartImage.GetComponent<CanvasGroup>().alpha = 0f;
+            monsterPartImage.GetComponent<CanvasGroup>().interactable = false;
+            monsterPartImage.GetComponent<CanvasGroup>().blocksRaycasts = false;
+        }
+
+        foreach (var monsterPartImage in ballsMonsterParts)
+        {
+            if (monsterPartImage.MonsterPart != null) continue;
+            monsterPartImage.GetComponent<CanvasGroup>().alpha = 0f;
+            monsterPartImage.GetComponent<CanvasGroup>().interactable = false;
+            monsterPartImage.GetComponent<CanvasGroup>().blocksRaycasts = false;
         }
     }
 
@@ -68,14 +113,28 @@ public class BobaTeaCreationManager : MonoBehaviour
         return monsterParts.Where(x => x.Value <= day).Select(x => x.Key).ToList();
     }
 
-    private void UnlockMonsterPart(MonsterPart monsterPart, int i)
+    private void UnlockMonsterPart(MonsterPart monsterPart, int i, BobaTeaPart bobaTeaPart)
     {
+        List<MonsterPartUIElement> monsterPartImages = new();
+
+        switch (bobaTeaPart)
+        {
+            case BobaTeaPart.Toppings:
+                monsterPartImages = toppingsMonsterParts;
+                break;
+            case BobaTeaPart.Tea:
+                monsterPartImages = teaMonsterParts;
+                break;
+            case BobaTeaPart.Balls:
+                monsterPartImages = ballsMonsterParts;
+                break;
+        }
+
         if (i >= monsterPartImages.Count) Debug.Log("Out of bounds, not enough monster part images");
 
         monsterPartImages[i].GetComponent<CanvasGroup>().alpha = 1f;
         monsterPartImages[i].GetComponent<CanvasGroup>().interactable = true;
         monsterPartImages[i].GetComponent<CanvasGroup>().blocksRaycasts = true;
-        monsterPartImages[i].sprite = monsterPart.Sprite;
         monsterPartImages[i].GetComponent<MonsterPartUIElement>().SetMonsterPart(monsterPart);
     }
 
