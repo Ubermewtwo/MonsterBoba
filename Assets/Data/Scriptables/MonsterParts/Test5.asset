@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3a6f555fb5c0f834282103b123bf4c13, type: 3}
-  m_Name: Spider Eyes
+  m_Name: Test5
   m_EditorClassIdentifier: 
-  Name: Spider Eyes
-  Sprite: {fileID: 21300000, guid: fbe938bf8c707e04aa35c2a532929c3c, type: 3}
+  Name: Test5
+  Sprite: {fileID: 21300000, guid: c2bc9a5ed313b2e4ea7be9120be49aec, type: 3}
   Flavours:
-    keys: 0100000002000000
-    values: 0100000001000000
-  BobaTeaPart: 0
+    keys: 02000000
+    values: 02000000
+  BobaTeaPart: 1

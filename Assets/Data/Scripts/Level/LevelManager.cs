@@ -46,6 +46,15 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI remainingTimeText; //texto
     [SerializeField] private Image remainingTimeImage;
 
+    // Counters
+    private int customersServed = 0;
+    private int moneyEarned = 0;
+
+    [SerializeField] private int moneyPerDifficulty = 100;
+    private int totalMoney = 0;
+
+    [SerializeField] private EndOfDayUI endOfDayUI;
+
     private void Awake()
     {
         if (Instance == null)
@@ -95,8 +104,12 @@ public class LevelManager : MonoBehaviour
         {
             //final del juego
             Debug.Log("Acabaste");
+            Debug.Log($"Money: {totalMoney}");
             return;
         }
+
+        moneyEarned = 0;
+        customersServed = 0;
 
         hasDayEnded = false;
 
@@ -164,6 +177,11 @@ public class LevelManager : MonoBehaviour
         //esto habra que hacerlo despues, pero primero quiero unir las cosas
         GenerateCustomer();
         Debug.Log(correctOrder);
+        if (correctOrder)
+        {
+            customersServed++;
+            moneyEarned += currentOrder.difficulty * moneyPerDifficulty;
+        }
 
         return correctOrder;
     }
@@ -173,6 +191,9 @@ public class LevelManager : MonoBehaviour
         //codigo de final de dia 
 
         hasDayEnded = true;
+
+        endOfDayUI.ShowUI(currentDay.day, customersServed, moneyEarned);
+        totalMoney += moneyEarned;
 
         //Esto realmente se llamara cuando acabe la parte de final de dia pero por ahora la pongo aqui para probar
         Debug.Log("Acaba el dia");

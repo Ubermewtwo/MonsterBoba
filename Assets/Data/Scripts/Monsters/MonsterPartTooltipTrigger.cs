@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class MonsterPartUIElement : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
@@ -9,7 +10,11 @@ public class MonsterPartUIElement : MonoBehaviour, IPointerEnterHandler, IPointe
 
     public UnityEvent<MonsterPartUIElement> OnClickEvent;
 
-    public void SetMonsterPart(MonsterPart monsterPart) => this.monsterPart = monsterPart;
+    public void SetMonsterPart(MonsterPart monsterPart)
+    {
+        this.monsterPart = monsterPart;
+        GetComponent<Image>().sprite = monsterPart.Sprite;
+    }
 
     public void OnPointerEnter(PointerEventData eventData)
     {

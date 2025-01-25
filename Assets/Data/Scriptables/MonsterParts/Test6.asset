@@ -9,11 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 063bb6c44f8c35a49a7ea919d7379a9f, type: 3}
-  m_Name: Order4
+  m_Script: {fileID: 11500000, guid: 3a6f555fb5c0f834282103b123bf4c13, type: 3}
+  m_Name: Test6
   m_EditorClassIdentifier: 
-  difficulty: 1
-  flavours:
-    keys: 00000000010000000200000003000000
-    values: 01000000000000000200000000000000
-  description: Bastante salado y algo picante
+  Name: Test6
+  Sprite: {fileID: 21300000, guid: 3500f9d788a037c498df7563f76c5634, type: 3}
+  Flavours:
+    keys: 01000000
+    values: 01000000
+  BobaTeaPart: 1

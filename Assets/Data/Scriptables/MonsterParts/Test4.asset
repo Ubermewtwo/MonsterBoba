@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3a6f555fb5c0f834282103b123bf4c13, type: 3}
-  m_Name: Spider Juice
+  m_Name: Test4
   m_EditorClassIdentifier: 
-  Name: Spider Juice
+  Name: Test4
   Sprite: {fileID: 21300000, guid: 2cf31eb6aaac8fe4bb578890059c1039, type: 3}
   Flavours:
-    keys: 02000000
+    keys: 00000000
     values: 02000000
   BobaTeaPart: 1
