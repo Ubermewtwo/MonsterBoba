@@ -8,30 +8,34 @@ using UnityEngine.InputSystem;
 
 public class LevelManager : MonoBehaviour
 {
+    [SerializeField]
+    private List<Order> easyOrders;
+    [SerializeField]
+    private List<Order> mediumOrders;
+    [SerializeField]
+    private List<Order> hardOrders;
 
-    public List<Order> easyOrders;
-    public List<Order> mediumOrders;
-    public List<Order> hardOrders;
+    private List<Order> currentDayOrders = new List<Order>();
 
-    public List<Order> currentDayOrders;
-
-    public List<Day> days;
-    public Day currentDay;
-    public int currentDayCounter = 0;
+    [SerializeField]
+    private List<Day> days;
+    private Day currentDay;
+    private int currentDayCounter = 0;
 
 
 
-    public Order currentOrder;
+    private Order currentOrder;
 
-    public string orderDescription;
+    private string orderDescription;
     public UDictionary<FlavourType, int> orderFlavourType;
     public List<Sprite> customerSprites;
     public Sprite currentCustomerSprite;
 
-    public int currentDayDifficulty = 0;
-    public int currentDayNumberOfCustomers = 0;
+    private int currentDayDifficulty = 0;
+    private int currentDayNumberOfCustomers = 0;
 
-    public CustomerDialog customerDialog;
+    [SerializeField]
+    private CustomerDialog customerDialog;
 
     [SerializeField] private TextMeshProUGUI waitingCustomersText; //texto
     private void Awake()
