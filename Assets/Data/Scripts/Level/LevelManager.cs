@@ -235,7 +235,7 @@ public class LevelManager : MonoBehaviour
         int seconds = Mathf.FloorToInt(currentDayTime - minutes * 60);
 
         string timeText = string.Format("{0:0}:{1:00}", minutes, seconds);
-        remainingTimeText.text = timeText;
+        //remainingTimeText.text = timeText;
         remainingTimeImage.fillAmount = currentDayTime / currentDay.dayTimeInSeconds;
     }
 
