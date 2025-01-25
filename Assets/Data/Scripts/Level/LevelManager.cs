@@ -4,10 +4,14 @@ using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
+    public static LevelManager Instance { get; private set; }
+
     [SerializeField]
     private List<Order> easyOrders;
     [SerializeField]
@@ -22,7 +26,7 @@ public class LevelManager : MonoBehaviour
     private Day currentDay;
     private int currentDayCounter = 0;
 
-
+    public UnityEvent<Day> OnDayChanged = new UnityEvent<Day>(); //evento>
 
     private Order currentOrder;
 
@@ -40,9 +44,18 @@ public class LevelManager : MonoBehaviour
     private CustomerDialog customerDialog;
 
     [SerializeField] private TextMeshProUGUI remainingTimeText; //texto
+    [SerializeField] private Image remainingTimeImage;
+
     private void Awake()
     {
-        
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -104,7 +117,7 @@ public class LevelManager : MonoBehaviour
         currentDayCounter++;
 
         GenerateCustomer();
-
+        OnDayChanged?.Invoke(currentDay);
     }
 
     private void GenerateCustomer()
@@ -150,6 +163,7 @@ public class LevelManager : MonoBehaviour
 
         //esto habra que hacerlo despues, pero primero quiero unir las cosas
         GenerateCustomer();
+        Debug.Log(correctOrder);
 
         return correctOrder;
     }
@@ -173,6 +187,7 @@ public class LevelManager : MonoBehaviour
 
         string timeText = string.Format("{0:0}:{1:00}", minutes, seconds);
         remainingTimeText.text = timeText;
+        remainingTimeImage.fillAmount = currentDayTime / currentDay.dayTimeInSeconds;
     }
 
     /* deprecated
