@@ -143,8 +143,13 @@ public class LevelManager : MonoBehaviour
             return;
         }
         */
- 
-        int choice = choice = Random.Range(0, currentDayOrders.Count);
+        int choice;
+        do
+        {
+            choice = Random.Range(0, currentDayOrders.Count);
+        }
+        while (currentDayOrders[choice] == currentOrder);
+
         currentOrder = currentDayOrders[choice];
 
 
@@ -157,7 +162,13 @@ public class LevelManager : MonoBehaviour
         orderFlavourType = currentOrder.flavours;
 
         //Poner el sprite customer
-        int count = Random.Range(0, customerSprites.Count);
+        int count;
+        do
+        {
+            count = Random.Range(0, customerSprites.Count);
+        }
+        while (customerSprites[count] == currentCustomerSprite);
+
         currentCustomerSprite = customerSprites[count];
         GetComponent<SpriteRenderer>().sprite = currentCustomerSprite;
 
