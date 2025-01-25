@@ -3181,7 +3181,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: ec5d026763f223046bbb66313fd76180, type: 2}
     - {fileID: 11400000, guid: 1ce277659e923444c9a95814338cd7b3, type: 2}
     values: 01000000070000000d000000
-  monsterPartContainer: {fileID: 477026532}
+  monsterPartsContainer: {fileID: 0}
   bobaTeaFlavoursBars:
     keys: 00000000010000000200000003000000
     values:
@@ -7204,6 +7204,9 @@ MonoBehaviour:
   days:
   - {fileID: 11400000, guid: 225f33e7702623744ad69b63efefc674, type: 2}
   - {fileID: 11400000, guid: 15c7ab78c359e8b4daa4d8e47c5bbe37, type: 2}
+  OnDayChanged:
+    m_PersistentCalls:
+      m_Calls: []
   orderFlavourType:
     keys: 
     values: 
@@ -7215,6 +7218,9 @@ MonoBehaviour:
   hasDayEnded: 0
   customerDialog: {fileID: 5380250835199247101}
   remainingTimeText: {fileID: 8034696032091115304}
+  remainingTimeImage: {fileID: 0}
+  moneyPerDifficulty: 100
+  endOfDayUI: {fileID: 0}
 --- !u!114 &1267154452583086372
 MonoBehaviour:
   m_ObjectHideFlags: 0

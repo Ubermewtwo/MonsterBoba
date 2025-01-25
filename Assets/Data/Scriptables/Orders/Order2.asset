@@ -15,5 +15,5 @@ MonoBehaviour:
   difficulty: 1
   flavours:
     keys: 00000000010000000200000003000000
-    values: 00000000010000000000000003000000
+    values: 03000000000000000100000000000000
   description: Muy amargo y algo dulce

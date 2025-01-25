@@ -15,5 +15,5 @@ MonoBehaviour:
   difficulty: 1
   flavours:
     keys: 00000000010000000200000003000000
-    values: 01000000000000000200000000000000
+    values: 00000000010000000000000002000000
   description: Bastante salado y algo picante
