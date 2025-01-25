@@ -1,10 +1,12 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class TooltipSystem : MonoBehaviour
 {
     public static TooltipSystem Instance { get; private set; }
 
-    [SerializeField] private GameObject monsterPartTooltipPrefab;
+    [SerializeField] private GameObject monsterPartTooltip;
+    [SerializeField] private GameObject monsterEggsTooltip;
 
     private void Awake()
     {
@@ -20,13 +22,25 @@ public class TooltipSystem : MonoBehaviour
 
     public void ShowMonsterPartTooltip(MonsterPart monsterPart, Vector3 position)
     {
-        monsterPartTooltipPrefab.transform.position = position;
-        monsterPartTooltipPrefab.GetComponent<MonsterPartTooltip>().SetMonsterPart(monsterPart);
-        monsterPartTooltipPrefab.gameObject.SetActive(true);
+        monsterPartTooltip.transform.position = position;
+        monsterPartTooltip.GetComponent<MonsterPartTooltip>().SetMonsterPart(monsterPart);
+        monsterPartTooltip.gameObject.SetActive(true);
     }
 
     public void HideMonsterPartTooltip()
     {
-        monsterPartTooltipPrefab.gameObject.SetActive(false);
+        monsterPartTooltip.gameObject.SetActive(false);
+    }
+
+    public void ShowMonsterEggsTooltip(UDictionary<Monster, int> monsterEggs, Vector3 position)
+    {
+        monsterEggsTooltip.transform.position = position;
+        monsterEggsTooltip.GetComponent<MonsterEggsTooltip>().SetMonsterEggs(monsterEggs);
+        monsterEggsTooltip.gameObject.SetActive(true);
+    }
+
+    public void HideMonsterEggsTooltip()
+    {
+        monsterEggsTooltip.gameObject.SetActive(false);
     }
 }
