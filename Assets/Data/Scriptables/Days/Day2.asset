@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   day: 2
   numberOfCustomers: 5
+  dayTimeInSeconds: 30
   easyOrders: 1
   mediumOrders: 0
   hardOrders: 0
