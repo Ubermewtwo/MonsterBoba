@@ -199,13 +199,11 @@ public class BobaTeaCreationManager : MonoBehaviour
 
         if (bobaTeaPartsAddedDict.Count > 0)
         {
-            discardBobaButton.alpha = 1f;
             discardBobaButton.interactable = true;
             discardBobaButton.blocksRaycasts = true;
         }
         else
         {
-            discardBobaButton.alpha = 0f;
             discardBobaButton.interactable = false;
             discardBobaButton.blocksRaycasts = false;
         }
