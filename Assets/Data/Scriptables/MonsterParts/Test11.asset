@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a6f555fb5c0f834282103b123bf4c13, type: 3}
   m_Name: Test11
   m_EditorClassIdentifier: 
-  Name: "Sangre de Bestia Tr\xE9mula"
+  Name: Displacer Beast Blood
   Sprite: {fileID: 21300000, guid: 6d07d94b0b4f7154d9fbf395a4683f27, type: 3}
   Flavours:
     keys: 0200000001000000

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a6f555fb5c0f834282103b123bf4c13, type: 3}
   m_Name: Test1
   m_EditorClassIdentifier: 
-  Name: "Pinchitos de Bestia Tr\xE9mula"
+  Name: Displacer Beast Spikes
   Sprite: {fileID: 21300000, guid: 8f3ee2b4426f95a4aa55780b5607ffcf, type: 3}
   Flavours:
     keys: 00000000

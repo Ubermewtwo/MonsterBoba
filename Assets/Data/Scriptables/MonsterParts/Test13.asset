@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a6f555fb5c0f834282103b123bf4c13, type: 3}
   m_Name: Test13
   m_EditorClassIdentifier: 
-  Name: Escamas de Basilisco
+  Name: Basilisc Scales
   Sprite: {fileID: 21300000, guid: 573dc2f60b951f04980d9d962a5b24fa, type: 3}
   Flavours:
     keys: 0000000001000000

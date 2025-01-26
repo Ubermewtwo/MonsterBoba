@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a6f555fb5c0f834282103b123bf4c13, type: 3}
   m_Name: Test12
   m_EditorClassIdentifier: 
-  Name: "Nido de Ara\xF1a Gigante"
+  Name: Giant Spider Nest
   Sprite: {fileID: 21300000, guid: 16edab6a1e37e784cbb5c17d1daca894, type: 3}
   Flavours:
     keys: 0000000003000000
