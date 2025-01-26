@@ -10,6 +10,7 @@ public class EndOfDayUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI moneyEarnedText;
     [SerializeField] private Transform unlockedMonsterPartContainer;
     [SerializeField] private GameObject unlockedMonsterPartPrefab;
+    [SerializeField] private CanvasGroup inputBlockingPanel;
 
     private CanvasGroup canvasGroup;
 
@@ -38,6 +39,9 @@ public class EndOfDayUI : MonoBehaviour
             Instantiate(unlockedMonsterPartPrefab, unlockedMonsterPartContainer).GetComponentInChildren<MonsterPartUIElement>().SetMonsterPart(unlockedMonsterParts[i]);
         }
 
+        inputBlockingPanel.alpha = 1f;
+        inputBlockingPanel.interactable = true;
+        inputBlockingPanel.blocksRaycasts = true;
         canvasGroup.alpha = 1f;
         canvasGroup.interactable = true;
         canvasGroup.blocksRaycasts = true;
@@ -46,6 +50,9 @@ public class EndOfDayUI : MonoBehaviour
 
     public void HideUI()
     {
+        inputBlockingPanel.alpha = 0f;
+        inputBlockingPanel.interactable = false;
+        inputBlockingPanel.blocksRaycasts = false;
         canvasGroup.alpha = 0f;
         canvasGroup.interactable = false;
         canvasGroup.blocksRaycasts = false;
