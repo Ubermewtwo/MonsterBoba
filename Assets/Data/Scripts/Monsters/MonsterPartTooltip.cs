@@ -30,19 +30,41 @@ public class MonsterPartTooltip : MonoBehaviour
 
     private void OnEnable()
     {
+        List<int> pairsActivated = new();
         nameText.text = monsterPart.Name;
-        bobaTeaPartText.text = monsterPart.BobaTeaPart.ToString();
+        bobaTeaPartText.text = "Part: " + monsterPart.BobaTeaPart.ToString();
         for (int i = 0; i < monsterPart.Flavours.Count; i++)
         {
-            flavoursText[i].gameObject.SetActive(true);
+            int textIndex = 0;
+            switch (monsterPart.Flavours.Keys[i])
+            {
+                case FlavourType.Bitter:
+                    textIndex = 0;
+                    break;
+                case FlavourType.Spicy:
+                    textIndex = 1;
+                    break;
+                case FlavourType.Sweet:
+                    textIndex = 2;
+                    break;
+                case FlavourType.Salty:
+                    textIndex = 3;
+                    break;
+            }
+            if (!pairsActivated.Contains(textIndex))
+            {
+                pairsActivated.Add(textIndex);
+            }
+            flavoursText[textIndex].gameObject.transform.parent.gameObject.SetActive(true);
             ChooseColorAndImageForText(i);
 
-            flavoursText[i].text = "<color=#" + ColorUtility.ToHtmlStringRGB(color) + ">" + monsterPart.Flavours.Keys[i].ToString() +  ": " + monsterPart.Flavours.Values[i].ToString() + "</color>";
+            flavoursText[textIndex].text = "<color=#" + ColorUtility.ToHtmlStringRGB(color) + ">" + monsterPart.Flavours.Keys[i].ToString() +  ": " + monsterPart.Flavours.Values[i].ToString() + "</color>";
         }
 
-        for (int i = monsterPart.Flavours.Count; i < flavoursText.Count; i++)
+        for (int i = 0; i < flavoursText.Count; i++)
         {
-            flavoursText[i].gameObject.SetActive(false);
+            if (pairsActivated.Contains(i)) continue;
+            flavoursText[i].gameObject.transform.parent.gameObject.SetActive(false);
             flavoursText[i].text = "";
         }
     }

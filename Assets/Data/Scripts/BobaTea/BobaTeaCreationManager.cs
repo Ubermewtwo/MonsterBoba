@@ -221,24 +221,66 @@ public class BobaTeaCreationManager : MonoBehaviour
 
         if (bobaTeaPartsAddedDict.Keys.Contains(BobaTeaPart.Balls)){
             bobaBallsImage.gameObject.SetActive(true);
+            foreach (var monsterPart in ballsMonsterParts)
+            {
+                if (monsterPart.GetComponent<CanvasGroup>().alpha > 0f)
+                {
+                    monsterPart.GetComponent<CanvasGroup>().alpha = 0.5f;
+                }
+            }
         }
         else
         {
             bobaBallsImage.gameObject.SetActive(false);
+            foreach (var monsterPart in ballsMonsterParts)
+            {
+                if (monsterPart.GetComponent<CanvasGroup>().alpha > 0f)
+                {
+                    monsterPart.GetComponent<CanvasGroup>().alpha = 1f;
+                }
+            }
         }
         if (bobaTeaPartsAddedDict.Keys.Contains(BobaTeaPart.Tea)){
             bobaTeaImage.gameObject.SetActive(true);
+            foreach (var monsterPart in teaMonsterParts)
+            {
+                if (monsterPart.GetComponent<CanvasGroup>().alpha > 0f)
+                {
+                    monsterPart.GetComponent<CanvasGroup>().alpha = 0.5f;
+                }
+            }
         }
         else
         {
             bobaTeaImage.gameObject.SetActive(false);
+            foreach (var monsterPart in teaMonsterParts)
+            {
+                if (monsterPart.GetComponent<CanvasGroup>().alpha > 0f)
+                {
+                    monsterPart.GetComponent<CanvasGroup>().alpha = 1f;
+                }
+            }
         }
         if (bobaTeaPartsAddedDict.Keys.Contains(BobaTeaPart.Toppings)){
             bobaToppingsImage.gameObject.SetActive(true);
+            foreach (var monsterPart in toppingsMonsterParts)
+            {
+                if (monsterPart.GetComponent<CanvasGroup>().alpha > 0f)
+                {
+                    monsterPart.GetComponent<CanvasGroup>().alpha = 0.5f;
+                }
+            }
         }
         else
         {
             bobaToppingsImage.gameObject.SetActive(false);
+            foreach (var monsterPart in toppingsMonsterParts)
+            {
+                if (monsterPart.GetComponent<CanvasGroup>().alpha > 0f)
+                {
+                    monsterPart.GetComponent<CanvasGroup>().alpha = 1f;
+                }
+            }
         }
     }
 }
