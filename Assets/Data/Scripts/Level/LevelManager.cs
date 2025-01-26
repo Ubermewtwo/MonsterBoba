@@ -355,6 +355,8 @@ public class LevelManager : MonoBehaviour
         }
         //codigo de final de dia 
 
+        BobaTeaCreationManager.Instance.DiscardBoba();
+
         hasDayEnded = true;
 
         totalMoney += moneyEarned;

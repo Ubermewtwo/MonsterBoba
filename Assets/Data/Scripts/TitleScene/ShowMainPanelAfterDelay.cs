@@ -1,10 +1,23 @@
 using UnityEngine;
+using UnityEngine.Video;
 
 public class ShowMainPanelAfterDelay : MonoBehaviour
 {
+    [SerializeField] private VideoPlayer videoPlayer;
+    [SerializeField] private VideoPlayer videoPlayerPuto;
+    [SerializeField] private AudioSource music;
+
     private void Awake()
     {
-        Invoke("ShowPanel", 4f);
+        Invoke("ShowVideo", 7f);
+        Invoke("ShowPanel", 11f);
+    }
+
+    private void ShowVideo()
+    {
+        videoPlayerPuto.gameObject.SetActive(false);
+        videoPlayer.Play();
+        music.Play();
     }
 
     private void ShowPanel()
