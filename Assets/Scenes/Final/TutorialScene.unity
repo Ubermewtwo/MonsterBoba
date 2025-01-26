@@ -3145,10 +3145,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'The client wants something bitter, choose XXX
+  m_text: 'The client wants something bitter, choose Nuclei
 
-    This will be the bobas
-    of the tea'
+    This will be the
+    bobas of the tea'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
@@ -3790,16 +3790,20 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1314096341404218884, guid: bcf5e6d7f415da740a7faf079f1172fb, type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 0.17254902
       objectReference: {fileID: 0}
     - target: {fileID: 1314096341404218884, guid: bcf5e6d7f415da740a7faf079f1172fb, type: 3}
       propertyPath: m_Color.g
-      value: 0.26551497
+      value: 0.2784314
       objectReference: {fileID: 0}
     - target: {fileID: 1314096341404218884, guid: bcf5e6d7f415da740a7faf079f1172fb, type: 3}
       propertyPath: m_Color.r
-      value: 1
+      value: 0.72156864
       objectReference: {fileID: 0}
+    - target: {fileID: 1314096341404218884, guid: bcf5e6d7f415da740a7faf079f1172fb, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: 48dd55aaa90d4ff45ba48ed8f0482e5a, type: 2}
     - target: {fileID: 1762088158363602637, guid: bcf5e6d7f415da740a7faf079f1172fb, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -4276,6 +4280,30 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1901326040}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1768592799}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &847298410
 MonoBehaviour:
@@ -5027,7 +5055,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &922788302
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5701,6 +5729,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1314096341404218884, guid: bcf5e6d7f415da740a7faf079f1172fb, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: fd808ca14b74a7643b15b60f14b4e34a, type: 2}
     - target: {fileID: 1762088158363602637, guid: bcf5e6d7f415da740a7faf079f1172fb, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -7332,7 +7364,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'you will fill de cup when you select an ingredient
+  m_text: 'You will fill de cup when you select an ingredient
 
     Touch it when
     you have completed the order'
@@ -7976,7 +8008,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'The client wants something spicy, choose XXX
+  m_text: 'The client wants something spicy, choose Slime
 
     This will be the tea'
   m_isRightToLeft: 0
@@ -8077,6 +8109,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1314096341404218884, guid: bcf5e6d7f415da740a7faf079f1172fb, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: bc8268c1653481b4b8a47da51171bc3d, type: 2}
     - target: {fileID: 1762088158363602637, guid: bcf5e6d7f415da740a7faf079f1172fb, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -9208,6 +9244,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6567370818841181010, guid: bac353e06aa54a04fa1507fee43fd6bc, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8c15c5c5fa138314cbd60640469fec01, type: 3}
+    - target: {fileID: 6567370818841181010, guid: bac353e06aa54a04fa1507fee43fd6bc, type: 3}
       propertyPath: m_Color.a
       value: 1
       objectReference: {fileID: 0}
@@ -9684,7 +9724,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1768592800
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9892,6 +9932,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1639366195}
     m_Modifications:
+    - target: {fileID: 1314096341404218884, guid: bcf5e6d7f415da740a7faf079f1172fb, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1314096341404218884, guid: bcf5e6d7f415da740a7faf079f1172fb, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1314096341404218884, guid: bcf5e6d7f415da740a7faf079f1172fb, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1314096341404218884, guid: bcf5e6d7f415da740a7faf079f1172fb, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1314096341404218884, guid: bcf5e6d7f415da740a7faf079f1172fb, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: b1ebfee105db6f948977ce2b83ff8efc, type: 2}
+    - target: {fileID: 1314096341404218884, guid: bcf5e6d7f415da740a7faf079f1172fb, type: 3}
+      propertyPath: m_FillAmount
+      value: 0.48
+      objectReference: {fileID: 0}
     - target: {fileID: 1762088158363602637, guid: bcf5e6d7f415da740a7faf079f1172fb, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -9975,6 +10039,14 @@ PrefabInstance:
     - target: {fileID: 3394637676367528865, guid: bcf5e6d7f415da740a7faf079f1172fb, type: 3}
       propertyPath: m_Name
       value: BobaTeaStatBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 3952130327918149559, guid: bcf5e6d7f415da740a7faf079f1172fb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8107904543959952162, guid: bcf5e6d7f415da740a7faf079f1172fb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10124,7 +10196,7 @@ PrefabInstance:
     - target: {fileID: 6567370818841181010, guid: bac353e06aa54a04fa1507fee43fd6bc, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 8c15c5c5fa138314cbd60640469fec01, type: 3}
+      objectReference: {fileID: 21300000, guid: 2cf31eb6aaac8fe4bb578890059c1039, type: 3}
     - target: {fileID: 6897836594035539693, guid: bac353e06aa54a04fa1507fee43fd6bc, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -10453,7 +10525,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1901326041
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10493,9 +10565,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: 92a3d80d318c68742b2003a2d5a61578, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -10568,7 +10640,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'The client wants something very spicy, choose XXX
+  m_text: 'The client wants something very spicy, choose Meat
 
     This will be the
     toppings'
@@ -11723,6 +11795,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6567370818841181010, guid: bac353e06aa54a04fa1507fee43fd6bc, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: edf7da9ed82f85948acfeb5cc408da96, type: 3}
     - target: {fileID: 6897836594035539693, guid: bac353e06aa54a04fa1507fee43fd6bc, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -12106,10 +12182,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'As you can see, when you choose an ingredient, these bars go up.
+  m_text: 'When you choose an ingredient, these bars go up.
 
-    Try
-    to keep up with the order'
+    Try to keep up with
+    the order'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
