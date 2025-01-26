@@ -87,6 +87,7 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] private AudioClipList startOfDaySounds;
     [SerializeField] private AudioClipList endOfDaySounds;
+    [SerializeField] private AudioClipList newCustomerSounds;
 
     public float CurrentTimePercentage => currentDayTime / currentDay.dayTimeInSeconds;
 
@@ -235,6 +236,7 @@ public class LevelManager : MonoBehaviour
         customer.sprite = customerSprites[count].RegularSprite;
         currentNPCVoices = npcVoices[count];
         currentDayNumberOfCustomers--;
+        newCustomerSounds.PlayAtPointRandom(transform.position);
 
         //customerDialog.SetBubbleMessage(orderDescription);
         //currentNPCVoices.OrderSounds.PlayAtPointRandom(transform.position);

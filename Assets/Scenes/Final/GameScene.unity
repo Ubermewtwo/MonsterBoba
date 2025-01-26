@@ -10187,6 +10187,11 @@ MonoBehaviour:
     pitch: 1
     audioClipList:
     - {fileID: 8300000, guid: e050cccc4661635478a517968f1d6688, type: 3}
+  newCustomerSounds:
+    volume: 0.5
+    pitch: 1
+    audioClipList:
+    - {fileID: 8300000, guid: d5d64adec27be6c448063813bb256798, type: 3}
 --- !u!4 &7232377692513238174
 Transform:
   m_ObjectHideFlags: 0
