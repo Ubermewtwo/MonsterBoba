@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 [Serializable]
@@ -84,6 +85,9 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private Image goldCoinsImage;
     [SerializeField] UDictionary<Sprite, int> moneySprites;
 
+    [SerializeField] private AudioClipList startOfDaySounds;
+    [SerializeField] private AudioClipList endOfDaySounds;
+
     public float CurrentTimePercentage => currentDayTime / currentDay.dayTimeInSeconds;
 
     private void Awake()
@@ -130,15 +134,18 @@ public class LevelManager : MonoBehaviour
 
 
     }
-    private void GenerateDay()
+    public void GenerateDay()
     {
         if (currentDayCounter >= days.Count)
         {
             //final del juego
             Debug.Log("Acabaste");
             Debug.Log($"Money: {totalMoney}");
+            SceneManager.LoadScene("EndScene");
             return;
         }
+
+        startOfDaySounds.PlayAtPointRandom(transform.position);
 
         moneyEarned = 0;
         customersServed = 0;
@@ -149,6 +156,10 @@ public class LevelManager : MonoBehaviour
         while (moneySprites.Values[index] < moneyEarned && index < moneySprites.Values.Count)
         {
             index++;
+            if (index >= moneySprites.Values.Count)
+            {
+                break;
+            }
         }
 
         goldCoinsImage.sprite = moneySprites.Keys[index];
@@ -277,6 +288,10 @@ public class LevelManager : MonoBehaviour
             while (moneySprites.Values[index] < moneyEarned && index < moneySprites.Values.Count)
             {
                 index++;
+                if (index >= moneySprites.Values.Count)
+                {
+                    break;
+                }
             }
 
             goldCoinsImage.sprite = moneySprites.Keys[index];
@@ -322,6 +337,8 @@ public class LevelManager : MonoBehaviour
 
     public void EndDay()
     {
+        endOfDaySounds.PlayAtPointRandom(transform.position);
+
         customerDialog.HideBubbleMessage();
         if (mySequence.IsActive() && mySequence.IsPlaying())
         {
@@ -336,13 +353,11 @@ public class LevelManager : MonoBehaviour
 
         hasDayEnded = true;
 
-        endOfDayUI.ShowUI(currentDay.day, customersServed, moneyEarned);
         totalMoney += moneyEarned;
+        endOfDayUI.ShowUI(currentDay.day, customersServed, moneyEarned);
 
         //Esto realmente se llamara cuando acabe la parte de final de dia pero por ahora la pongo aqui para probar
         Debug.Log("Acaba el dia");
-        GenerateDay();
-
     }
 
     public void UpdateTimerText()
