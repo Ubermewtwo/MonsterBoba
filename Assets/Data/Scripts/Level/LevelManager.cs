@@ -61,7 +61,9 @@ public class LevelManager : MonoBehaviour
     public int TotalMoney => totalMoney;
 
     [SerializeField] private EndOfDayUI endOfDayUI;
-    [SerializeField] private TextMeshProUGUI goldGainedUI;
+    //[SerializeField] private TextMeshProUGUI goldGainedUI;
+    [SerializeField] private Image goldCoinsImage;
+    [SerializeField] UDictionary<Sprite, int> moneySprites;
 
     private void Awake()
     {
@@ -119,7 +121,24 @@ public class LevelManager : MonoBehaviour
 
         moneyEarned = 0;
         customersServed = 0;
-        goldGainedUI.text = "Gold: " + moneyEarned.ToString();
+        //goldGainedUI.text = "Gold: " + moneyEarned.ToString();
+
+        int index = 0;
+
+        while (moneySprites.Values[index] < moneyEarned && index < moneySprites.Values.Count)
+        {
+            index++;
+        }
+
+        goldCoinsImage.sprite = moneySprites.Keys[index];
+        if (index == 0)
+        {
+            goldCoinsImage.enabled = false;
+        }
+        else
+        {
+            goldCoinsImage.enabled = true;
+        }
 
         hasDayEnded = false;
 
@@ -206,7 +225,25 @@ public class LevelManager : MonoBehaviour
             customersServed++;
             moneyEarned += currentOrder.difficulty * moneyPerDifficulty;
             currentNPCVoices.CorrectOrderSounds.PlayAtPointRandom(transform.position);
-            goldGainedUI.text = "Gold: " + moneyEarned.ToString();
+
+            int index = 0;
+
+            while (moneySprites.Values[index] < moneyEarned && index < moneySprites.Values.Count)
+            {
+                index++;
+            }
+
+            goldCoinsImage.sprite = moneySprites.Keys[index];
+            if (index == 0)
+            {
+                goldCoinsImage.enabled = false;
+            }
+            else
+            {
+                goldCoinsImage.enabled = true;
+            }
+
+            //goldGainedUI.text = "Gold: " + moneyEarned.ToString();
         }
         else
         {
