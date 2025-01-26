@@ -45,6 +45,18 @@ public class TittleSceneMethods : MonoBehaviour
         SceneManager.LoadScene("TittleScene");
     }
 
+    public void LoadTutorialScene()
+    {
+        if (isLoadingScene) return;
+        isLoadingScene = true;
+        Invoke("LoadTutorialScenelater", 1f);
+    }
+
+    private void LoadTutorialScenelater()
+    {
+        SceneManager.LoadScene("TutorialScene");
+    }
+
     public void ExitGamePlease()
     {
 #if UNITY_EDITOR
