@@ -55,6 +55,8 @@ public class LevelManager : MonoBehaviour
     private bool hasReachedTheCounter = false;
     public bool HasReachedTheCounter => hasReachedTheCounter;
     private Sequence mySequence;
+    [SerializeField] private Transform door;
+    private Sequence doorSequence;
 
     [SerializeField] private Image remainingTimeImage;
 
@@ -229,6 +231,12 @@ public class LevelManager : MonoBehaviour
         // Optional: Start the sequence
         mySequence.Play();
 
+        door.rotation = Quaternion.Euler(0, 90, 0);
+        doorSequence = DOTween.Sequence();
+        doorSequence.AppendInterval(0.5f);
+        doorSequence.Append(door.DORotate(new Vector3(0, 0, 0), 1f, RotateMode.FastBeyond360).SetEase(Ease.Linear));
+        doorSequence.Play();
+
     }
 
     private void ShowOrder()
@@ -292,6 +300,11 @@ public class LevelManager : MonoBehaviour
         // Optional: Start the sequence
         mySequence.Play();
 
+        doorSequence = DOTween.Sequence();
+        doorSequence.AppendInterval(0.5f);
+        doorSequence.Append(door.DORotate(new Vector3(0, 90, 0), 1f, RotateMode.FastBeyond360).SetEase(Ease.Linear));
+        doorSequence.Play();
+
         return correctOrder;
     }
 
@@ -301,6 +314,11 @@ public class LevelManager : MonoBehaviour
         if (mySequence.IsActive() && mySequence.IsPlaying())
         {
             mySequence.Complete(true); // Completes all tweens immediately
+        }
+
+        if (doorSequence.IsActive() && doorSequence.IsPlaying())
+        {
+            doorSequence.Complete(true); // Completes all tweens immediately
         }
         //codigo de final de dia 
 
