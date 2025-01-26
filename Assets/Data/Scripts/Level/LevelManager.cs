@@ -158,6 +158,7 @@ public class LevelManager : MonoBehaviour
             index++;
             if (index >= moneySprites.Values.Count)
             {
+                index--;
                 break;
             }
         }
@@ -290,6 +291,7 @@ public class LevelManager : MonoBehaviour
                 index++;
                 if (index >= moneySprites.Values.Count)
                 {
+                    index--;
                     break;
                 }
             }
