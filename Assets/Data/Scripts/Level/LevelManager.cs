@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections.Generic;
 using TMPro;
@@ -49,6 +50,10 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField]
     private CustomerDialog customerDialog;
+
+    [SerializeField] private SpriteRenderer customer;
+    private bool hasReachedTheCounter = false;
+    public bool HasReachedTheCounter => hasReachedTheCounter;
     
     [SerializeField] private Image remainingTimeImage;
 
@@ -64,6 +69,8 @@ public class LevelManager : MonoBehaviour
     //[SerializeField] private TextMeshProUGUI goldGainedUI;
     [SerializeField] private Image goldCoinsImage;
     [SerializeField] UDictionary<Sprite, int> moneySprites;
+
+    public float CurrentTimePercentage => currentDayTime / currentDay.dayTimeInSeconds;
 
     private void Awake()
     {
@@ -164,7 +171,7 @@ public class LevelManager : MonoBehaviour
 
     private void GenerateCustomer()
     {
-
+        hasReachedTheCounter = false;
         /*
         if(currentDayNumberOfCustomers <= 0)
         {
@@ -200,14 +207,34 @@ public class LevelManager : MonoBehaviour
 
         currentCustomerSprite = customerSprites[count];
         currentNPCVoices = npcVoices[count];
-        currentNPCVoices.OrderSounds.PlayAtPointRandom(transform.position);
 
-        GetComponent<SpriteRenderer>().sprite = currentCustomerSprite;
-
-        customerDialog.SetBubbleMessage(orderDescription);
+        customer.sprite = currentCustomerSprite;
         currentDayNumberOfCustomers--;
-        
 
+        //customerDialog.SetBubbleMessage(orderDescription);
+        //currentNPCVoices.OrderSounds.PlayAtPointRandom(transform.position);
+        customer.color = new Color(customer.color.r, customer.color.g, customer.color.b, 0);
+
+        Sequence mySequence = DOTween.Sequence();
+        // Step 1: Fade from transparent to opaque
+        mySequence.Append(customer.DOFade(1, 1f)); // Fade in over 1 second
+
+        // Step 2: Move up and down in place for 1.5 seconds
+        mySequence.Append(customer.transform.DOMoveY(customer.transform.position.y + 0.3f, 0.25f).SetLoops(4, LoopType.Yoyo).SetEase(Ease.InOutSine));
+
+        // Step 3: Invoke a method at the end
+        mySequence.OnComplete(ShowOrder);
+
+        // Optional: Start the sequence
+        mySequence.Play();
+
+    }
+
+    private void ShowOrder()
+    {
+        hasReachedTheCounter = true;
+        customerDialog.SetBubbleMessage(orderDescription);
+        currentNPCVoices.OrderSounds.PlayAtPointRandom(transform.position);
     }
 
     public bool ReciveBubba(UDictionary<FlavourType, int> bubbaFlavours)
@@ -218,7 +245,6 @@ public class LevelManager : MonoBehaviour
         //customerDialog.HideBubbleMessage();
 
         //esto habra que hacerlo despues, pero primero quiero unir las cosas
-        GenerateCustomer();
         Debug.Log(correctOrder);
         if (correctOrder)
         {
@@ -249,6 +275,21 @@ public class LevelManager : MonoBehaviour
         {
             currentNPCVoices.WrongOrderSounds.PlayAtPointRandom(transform.position);
         }
+        hasReachedTheCounter = false;
+        customerDialog.HideBubbleMessage();
+
+        Sequence mySequence = DOTween.Sequence();
+        // Step 1: Fade from transparent to opaque
+        mySequence.Append(customer.transform.DOMoveY(customer.transform.position.y + 0.3f, 0.25f).SetLoops(4, LoopType.Yoyo).SetEase(Ease.InOutSine));
+
+        // Step 2: Move up and down in place for 1.5 seconds
+        mySequence.Append(customer.DOFade(0, 1f)); // Fade in over 1 second
+
+        // Step 3: Invoke a method at the end
+        mySequence.OnComplete(GenerateCustomer);
+
+        // Optional: Start the sequence
+        mySequence.Play();
 
         return correctOrder;
     }
