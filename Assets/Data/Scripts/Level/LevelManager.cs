@@ -156,6 +156,10 @@ public class LevelManager : MonoBehaviour
         while (moneySprites.Values[index] < moneyEarned && index < moneySprites.Values.Count)
         {
             index++;
+            if (index >= moneySprites.Values.Count)
+            {
+                break;
+            }
         }
 
         goldCoinsImage.sprite = moneySprites.Keys[index];
@@ -284,6 +288,10 @@ public class LevelManager : MonoBehaviour
             while (moneySprites.Values[index] < moneyEarned && index < moneySprites.Values.Count)
             {
                 index++;
+                if (index >= moneySprites.Values.Count)
+                {
+                    break;
+                }
             }
 
             goldCoinsImage.sprite = moneySprites.Keys[index];
