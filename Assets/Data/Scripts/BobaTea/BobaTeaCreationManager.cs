@@ -181,8 +181,11 @@ public class BobaTeaCreationManager : MonoBehaviour
 
     public void SendBoba()
     {
-        LevelManager.Instance.ReciveBubba(bobaTeaStats);
-        DiscardBoba();
+        if (LevelManager.Instance.HasReachedTheCounter)
+        {
+            LevelManager.Instance.ReciveBubba(bobaTeaStats);
+            DiscardBoba();
+        }
     }
 
     private void RefreshUI()
