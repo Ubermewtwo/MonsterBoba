@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8683867588353149781}
   - component: {fileID: 1632254078485133577}
   m_Layer: 0
-  m_Name: MonsterPartClickEffect
+  m_Name: MonsterPartClickEffect 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4838,7 +4838,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 867911b0b0c91eb469bd70b61159c436, type: 2}
+  - {fileID: 2100000, guid: 305c223ce4278db428e151416eecf4cc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

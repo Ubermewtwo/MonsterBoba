@@ -169,6 +169,9 @@ public class BobaTeaCreationManager : MonoBehaviour
             RefreshUI();
 
             monsterPartUIElement.MonsterPart.AddedToBobaSound.PlayAtPointRandom(transform.position);
+
+            GameObject VFX = Instantiate(monsterPartUIElement.MonsterPart.clickVFX, monsterPartUIElement.VfxSpawnPosition, Quaternion.identity);
+            Destroy(VFX, 2);
         }
     }
 

@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class MonsterPartUIElement : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
+    [SerializeField] private Vector3 vfxSpawnPosition;
+    public Vector3 VfxSpawnPosition => vfxSpawnPosition;
     private MonsterPart monsterPart = null;
     public MonsterPart MonsterPart => monsterPart;
 

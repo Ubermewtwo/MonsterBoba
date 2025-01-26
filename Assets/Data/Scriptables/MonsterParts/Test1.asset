@@ -23,3 +23,4 @@ MonoBehaviour:
     pitch: 1
     audioClipList:
     - {fileID: 8300000, guid: 58e5f446a41c76e40877b94075c6cfae, type: 3}
+  clickVFX: {fileID: 3305430113239512544, guid: 45bcbe6dc55c9c547a049486170e0b2a, type: 3}
