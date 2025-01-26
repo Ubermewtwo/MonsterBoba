@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 [Serializable]
@@ -130,13 +131,14 @@ public class LevelManager : MonoBehaviour
 
 
     }
-    private void GenerateDay()
+    public void GenerateDay()
     {
         if (currentDayCounter >= days.Count)
         {
             //final del juego
             Debug.Log("Acabaste");
             Debug.Log($"Money: {totalMoney}");
+            SceneManager.LoadScene("EndScene");
             return;
         }
 
@@ -336,13 +338,11 @@ public class LevelManager : MonoBehaviour
 
         hasDayEnded = true;
 
-        endOfDayUI.ShowUI(currentDay.day, customersServed, moneyEarned);
         totalMoney += moneyEarned;
+        endOfDayUI.ShowUI(currentDay.day, customersServed, moneyEarned);
 
         //Esto realmente se llamara cuando acabe la parte de final de dia pero por ahora la pongo aqui para probar
         Debug.Log("Acaba el dia");
-        GenerateDay();
-
     }
 
     public void UpdateTimerText()
