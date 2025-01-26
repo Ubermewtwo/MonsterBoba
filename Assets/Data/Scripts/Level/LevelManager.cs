@@ -54,7 +54,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private SpriteRenderer customer;
     private bool hasReachedTheCounter = false;
     public bool HasReachedTheCounter => hasReachedTheCounter;
-    
+    private Sequence mySequence;
+
     [SerializeField] private Image remainingTimeImage;
 
     // Counters
@@ -215,7 +216,7 @@ public class LevelManager : MonoBehaviour
         //currentNPCVoices.OrderSounds.PlayAtPointRandom(transform.position);
         customer.color = new Color(customer.color.r, customer.color.g, customer.color.b, 0);
 
-        Sequence mySequence = DOTween.Sequence();
+        mySequence = DOTween.Sequence();
         // Step 1: Fade from transparent to opaque
         mySequence.Append(customer.DOFade(1, 1f)); // Fade in over 1 second
 
@@ -278,7 +279,7 @@ public class LevelManager : MonoBehaviour
         hasReachedTheCounter = false;
         customerDialog.HideBubbleMessage();
 
-        Sequence mySequence = DOTween.Sequence();
+        mySequence = DOTween.Sequence();
         // Step 1: Fade from transparent to opaque
         mySequence.Append(customer.transform.DOMoveY(customer.transform.position.y + 0.3f, 0.25f).SetLoops(4, LoopType.Yoyo).SetEase(Ease.InOutSine));
 
@@ -296,6 +297,11 @@ public class LevelManager : MonoBehaviour
 
     public void EndDay()
     {
+        customerDialog.HideBubbleMessage();
+        if (mySequence.IsActive() && mySequence.IsPlaying())
+        {
+            mySequence.Complete(true); // Completes all tweens immediately
+        }
         //codigo de final de dia 
 
         hasDayEnded = true;
