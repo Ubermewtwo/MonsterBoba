@@ -26,7 +26,6 @@ public class ChangColorLight : MonoBehaviour
             Debug.Log("No se encontró ninguna luz direccional en la escena.");
         }
         //asignar referencia del metodo time
-        timeLimit = LevelManager.Instance.CurrentTimePercentage ;
     }
 
     // Update is called once per frame
@@ -41,7 +40,6 @@ public class ChangColorLight : MonoBehaviour
             // Cambia el color de la luz basado en el valor del float
             mainLight.color = ligthColors.Evaluate(timeLimit);
 
-            Debug.Log($"Time Limit {timeLimit}");
 
         }
     }

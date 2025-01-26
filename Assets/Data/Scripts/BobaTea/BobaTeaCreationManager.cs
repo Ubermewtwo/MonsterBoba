@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-[DefaultExecutionOrder(-1)]
+[DefaultExecutionOrder(-2)]
 public class BobaTeaCreationManager : MonoBehaviour
 {
     public static BobaTeaCreationManager Instance { get; private set; }

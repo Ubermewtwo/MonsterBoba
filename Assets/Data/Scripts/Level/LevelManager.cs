@@ -14,6 +14,15 @@ public class NPCVoices
     public AudioClipList WrongOrderSounds;
 }
 
+[Serializable]
+public class NPCSprites
+{
+    public Sprite RegularSprite;
+    public Sprite SatisfiedSprite;
+    public Sprite UnsatisfiedSprite;
+}
+
+[DefaultExecutionOrder(-1)]
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance { get; private set; }
@@ -38,9 +47,11 @@ public class LevelManager : MonoBehaviour
 
     private string orderDescription;
     public UDictionary<FlavourType, int> orderFlavourType;
-    public List<Sprite> customerSprites;
+    //public List<Sprite> customerSprites;
+    public List<NPCSprites> customerSprites;
+    int lastCustomerIndex = -1;
+
     [SerializeField] private List<NPCVoices> npcVoices;
-    private Sprite currentCustomerSprite;
     private NPCVoices currentNPCVoices;
 
     private int currentDayDifficulty = 0;
@@ -206,12 +217,11 @@ public class LevelManager : MonoBehaviour
         {
             count = UnityEngine.Random.Range(0, customerSprites.Count);
         }
-        while (customerSprites[count] == currentCustomerSprite);
+        while (count == lastCustomerIndex);
+        lastCustomerIndex = count;
 
-        currentCustomerSprite = customerSprites[count];
+        customer.sprite = customerSprites[count].RegularSprite;
         currentNPCVoices = npcVoices[count];
-
-        customer.sprite = currentCustomerSprite;
         currentDayNumberOfCustomers--;
 
         //customerDialog.SetBubbleMessage(orderDescription);
@@ -259,6 +269,7 @@ public class LevelManager : MonoBehaviour
         {
             customersServed++;
             moneyEarned += currentOrder.difficulty * moneyPerDifficulty;
+            customer.sprite = customerSprites[lastCustomerIndex].SatisfiedSprite;
             currentNPCVoices.CorrectOrderSounds.PlayAtPointRandom(transform.position);
 
             int index = 0;
@@ -282,6 +293,7 @@ public class LevelManager : MonoBehaviour
         }
         else
         {
+            customer.sprite = customerSprites[lastCustomerIndex].UnsatisfiedSprite;
             currentNPCVoices.WrongOrderSounds.PlayAtPointRandom(transform.position);
         }
         hasReachedTheCounter = false;
