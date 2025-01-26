@@ -3827,6 +3827,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 782502039}
   m_CullTransparentMesh: 1
+--- !u!1 &798156319
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 798156321}
+  - component: {fileID: 798156320}
+  m_Layer: 0
+  m_Name: SoundPlayerMethodsHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &798156320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 798156319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d286acceee2a6f4bb1bb747092b219a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  discardSounds:
+    volume: 1
+    pitch: 1
+    audioClipList:
+    - {fileID: 8300000, guid: d930380027fcf91439335cbf0d715ec7, type: 3}
+--- !u!4 &798156321
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 798156319}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.8543787, y: 4.1461887, z: -20.535599}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &810787414
 GameObject:
   m_ObjectHideFlags: 0
@@ -4893,6 +4942,18 @@ MonoBehaviour:
       - m_Target: {fileID: 983318438}
         m_TargetAssemblyTypeName: EndOfDayUI, Assembly-CSharp
         m_MethodName: HideUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1003096425973445128}
+        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
+        m_MethodName: GenerateDay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7099,6 +7160,18 @@ MonoBehaviour:
       - m_Target: {fileID: 990278616}
         m_TargetAssemblyTypeName: BobaTeaCreationManager, Assembly-CSharp
         m_MethodName: DiscardBoba
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 798156320}
+        m_TargetAssemblyTypeName: SoundPlayerMethods, Assembly-CSharp
+        m_MethodName: PlayDiscardSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10390,6 +10463,16 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 05a6c46664f9a7d4582879531fab7001, type: 3}
     - {fileID: 21300000, guid: 3248491f876746949a46110657376692, type: 3}
     values: 0000000064000000c80000002c01000090010000f4010000
+  startOfDaySounds:
+    volume: 1
+    pitch: 1
+    audioClipList:
+    - {fileID: 8300000, guid: afe0149ea8cd6fc4aaf33976944ad629, type: 3}
+  endOfDaySounds:
+    volume: 1
+    pitch: 1
+    audioClipList:
+    - {fileID: 8300000, guid: e050cccc4661635478a517968f1d6688, type: 3}
 --- !u!4 &7232377692513238174
 Transform:
   m_ObjectHideFlags: 0
@@ -10421,3 +10504,4 @@ SceneRoots:
   - {fileID: 2133060902}
   - {fileID: 420037265}
   - {fileID: 810787416}
+  - {fileID: 798156321}

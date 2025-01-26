@@ -85,6 +85,9 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private Image goldCoinsImage;
     [SerializeField] UDictionary<Sprite, int> moneySprites;
 
+    [SerializeField] private AudioClipList startOfDaySounds;
+    [SerializeField] private AudioClipList endOfDaySounds;
+
     public float CurrentTimePercentage => currentDayTime / currentDay.dayTimeInSeconds;
 
     private void Awake()
@@ -141,6 +144,8 @@ public class LevelManager : MonoBehaviour
             SceneManager.LoadScene("EndScene");
             return;
         }
+
+        startOfDaySounds.PlayAtPointRandom(transform.position);
 
         moneyEarned = 0;
         customersServed = 0;
@@ -324,6 +329,8 @@ public class LevelManager : MonoBehaviour
 
     public void EndDay()
     {
+        endOfDaySounds.PlayAtPointRandom(transform.position);
+
         customerDialog.HideBubbleMessage();
         if (mySequence.IsActive() && mySequence.IsPlaying())
         {
