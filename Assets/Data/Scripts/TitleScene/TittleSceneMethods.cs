@@ -47,8 +47,13 @@ public class TittleSceneMethods : MonoBehaviour
 
     public void ExitGamePlease()
     {
-        if (Application.isEditor) UnityEditor.EditorApplication.isPlaying = false;
-        else Application.Quit();
+#if UNITY_EDITOR
+        // Exit play mode in the editor
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+    // Quit the application
+    Application.Quit();
+#endif
     }
 
     public void ShowCanvasGroup(CanvasGroup canvasGroup)
