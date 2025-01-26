@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a6f555fb5c0f834282103b123bf4c13, type: 3}
   m_Name: Test14
   m_EditorClassIdentifier: 
-  Name: 
-  Sprite: {fileID: 21300000, guid: 2cf31eb6aaac8fe4bb578890059c1039, type: 3}
+  Name: Baba de Cerbero
+  Sprite: {fileID: 21300000, guid: 9872cce90f633d741a0fe7381f2d4c7e, type: 3}
   Flavours:
     keys: 0000000003000000
     values: 0200000001000000
@@ -21,4 +21,5 @@ MonoBehaviour:
   AddedToBobaSound:
     volume: 1
     pitch: 1
-    audioClipList: []
+    audioClipList:
+    - {fileID: 8300000, guid: 533a948df18b15a43abb0fd0292b8bbf, type: 3}

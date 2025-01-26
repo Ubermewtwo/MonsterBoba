@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a6f555fb5c0f834282103b123bf4c13, type: 3}
   m_Name: Test3
   m_EditorClassIdentifier: 
-  Name: Test3
+  Name: Carne de Chuul
   Sprite: {fileID: 21300000, guid: b3d9f1cb8e021f1419d32881d791107d, type: 3}
   Flavours:
     keys: 01000000

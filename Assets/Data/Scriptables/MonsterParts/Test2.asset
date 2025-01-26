@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a6f555fb5c0f834282103b123bf4c13, type: 3}
   m_Name: Test2
   m_EditorClassIdentifier: 
-  Name: Test2
+  Name: Escamas Crunchy de Wyvern
   Sprite: {fileID: 21300000, guid: ad1644b58c61abc4a81f7ef4ee289ae4, type: 3}
   Flavours:
     keys: 01000000

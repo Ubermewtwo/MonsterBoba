@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a6f555fb5c0f834282103b123bf4c13, type: 3}
   m_Name: Test6
   m_EditorClassIdentifier: 
-  Name: Test6
+  Name: "Veneno de Ara\xF1a Gigante"
   Sprite: {fileID: 21300000, guid: 3500f9d788a037c498df7563f76c5634, type: 3}
   Flavours:
     keys: 01000000
