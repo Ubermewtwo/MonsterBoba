@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Counter
       objectReference: {fileID: 0}
+    - target: {fileID: 1704814832995520232, guid: ea86df65f89acd447b5d984bc8f5e8f2, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: e873e05e61659e440ae457f4ffb395d4, type: 2}
     - target: {fileID: 7605250914481130303, guid: ea86df65f89acd447b5d984bc8f5e8f2, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
