@@ -26,10 +26,19 @@ public class BobaTeaCreationManager : MonoBehaviour
     private UDictionary<FlavourType, int> bobaTeaStats = new UDictionary<FlavourType, int>();
     private Dictionary<BobaTeaPart, MonsterPart> bobaTeaPartsAddedDict = new Dictionary<BobaTeaPart, MonsterPart>();
 
+    // Images of boba
+    [SerializeField] private Image bobaToppingsImage;
+    [SerializeField] private Image bobaTeaImage;
+    [SerializeField] private Image bobaBallsImage;
+
     private void Awake()
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
+
+        bobaToppingsImage.gameObject.SetActive(false);
+        bobaTeaImage.gameObject.SetActive(false);
+        bobaBallsImage.gameObject.SetActive(false);
 
         foreach (Transform child in monsterPartsContainer.GetChild(0))
         {
@@ -203,15 +212,35 @@ public class BobaTeaCreationManager : MonoBehaviour
 
         if (bobaTeaPartsAddedDict.Count == 3)
         {
-            sendBobaButton.alpha = 1f;
             sendBobaButton.interactable = true;
             sendBobaButton.blocksRaycasts = true;
         }
         else
         {
-            sendBobaButton.alpha = 0f;
             sendBobaButton.interactable = false;
             sendBobaButton.blocksRaycasts = false;
+        }
+
+        if (bobaTeaPartsAddedDict.Keys.Contains(BobaTeaPart.Balls)){
+            bobaBallsImage.gameObject.SetActive(true);
+        }
+        else
+        {
+            bobaBallsImage.gameObject.SetActive(false);
+        }
+        if (bobaTeaPartsAddedDict.Keys.Contains(BobaTeaPart.Tea)){
+            bobaTeaImage.gameObject.SetActive(true);
+        }
+        else
+        {
+            bobaTeaImage.gameObject.SetActive(false);
+        }
+        if (bobaTeaPartsAddedDict.Keys.Contains(BobaTeaPart.Toppings)){
+            bobaToppingsImage.gameObject.SetActive(true);
+        }
+        else
+        {
+            bobaToppingsImage.gameObject.SetActive(false);
         }
     }
 }

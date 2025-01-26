@@ -179,7 +179,7 @@ MonoBehaviour:
   m_text: CONGRATULATIONS!!!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8600fa2e26a54b5409e0ee5206ea75c2, type: 2}
-  m_sharedMaterial: {fileID: 5993714797713300811, guid: 8600fa2e26a54b5409e0ee5206ea75c2, type: 2}
+  m_sharedMaterial: {fileID: -5478832325370705143, guid: 8600fa2e26a54b5409e0ee5206ea75c2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -360,7 +360,7 @@ MonoBehaviour:
   m_text: You earned a total of 8 gold
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8600fa2e26a54b5409e0ee5206ea75c2, type: 2}
-  m_sharedMaterial: {fileID: 5993714797713300811, guid: 8600fa2e26a54b5409e0ee5206ea75c2, type: 2}
+  m_sharedMaterial: {fileID: -5478832325370705143, guid: 8600fa2e26a54b5409e0ee5206ea75c2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1376,7 +1376,7 @@ MonoBehaviour:
   m_text: RETURN TO TITTLE
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8600fa2e26a54b5409e0ee5206ea75c2, type: 2}
-  m_sharedMaterial: {fileID: 5993714797713300811, guid: 8600fa2e26a54b5409e0ee5206ea75c2, type: 2}
+  m_sharedMaterial: {fileID: -5478832325370705143, guid: 8600fa2e26a54b5409e0ee5206ea75c2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

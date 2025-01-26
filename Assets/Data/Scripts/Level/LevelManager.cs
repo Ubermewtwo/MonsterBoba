@@ -49,8 +49,7 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField]
     private CustomerDialog customerDialog;
-
-    [SerializeField] private TextMeshProUGUI remainingTimeText; //texto
+    
     [SerializeField] private Image remainingTimeImage;
 
     // Counters
@@ -62,6 +61,7 @@ public class LevelManager : MonoBehaviour
     public int TotalMoney => totalMoney;
 
     [SerializeField] private EndOfDayUI endOfDayUI;
+    [SerializeField] private TextMeshProUGUI goldGainedUI;
 
     private void Awake()
     {
@@ -119,6 +119,7 @@ public class LevelManager : MonoBehaviour
 
         moneyEarned = 0;
         customersServed = 0;
+        goldGainedUI.text = "Gold: " + moneyEarned.ToString();
 
         hasDayEnded = false;
 
@@ -205,6 +206,7 @@ public class LevelManager : MonoBehaviour
             customersServed++;
             moneyEarned += currentOrder.difficulty * moneyPerDifficulty;
             currentNPCVoices.CorrectOrderSounds.PlayAtPointRandom(transform.position);
+            goldGainedUI.text = "Gold: " + moneyEarned.ToString();
         }
         else
         {

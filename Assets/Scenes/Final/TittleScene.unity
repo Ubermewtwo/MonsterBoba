@@ -179,7 +179,7 @@ MonoBehaviour:
   m_text: START
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8600fa2e26a54b5409e0ee5206ea75c2, type: 2}
-  m_sharedMaterial: {fileID: 5993714797713300811, guid: 8600fa2e26a54b5409e0ee5206ea75c2, type: 2}
+  m_sharedMaterial: {fileID: -5478832325370705143, guid: 8600fa2e26a54b5409e0ee5206ea75c2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -396,7 +396,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &329113016
 RectTransform:
   m_ObjectHideFlags: 0
@@ -643,7 +643,7 @@ MonoBehaviour:
   m_text: EXIT
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8600fa2e26a54b5409e0ee5206ea75c2, type: 2}
-  m_sharedMaterial: {fileID: 5993714797713300811, guid: 8600fa2e26a54b5409e0ee5206ea75c2, type: 2}
+  m_sharedMaterial: {fileID: -5478832325370705143, guid: 8600fa2e26a54b5409e0ee5206ea75c2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1093,7 +1093,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 300, y: 150}
+  m_SizeDelta: {x: 400, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1429789261
 MonoBehaviour:
@@ -1676,7 +1676,7 @@ MonoBehaviour:
   m_text: SETTINGS
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8600fa2e26a54b5409e0ee5206ea75c2, type: 2}
-  m_sharedMaterial: {fileID: 5993714797713300811, guid: 8600fa2e26a54b5409e0ee5206ea75c2, type: 2}
+  m_sharedMaterial: {fileID: -5478832325370705143, guid: 8600fa2e26a54b5409e0ee5206ea75c2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1700,7 +1700,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 67.9
+  m_fontSize: 72
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1933,7 +1933,7 @@ MonoBehaviour:
   m_text: MONSTER BOBA
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8600fa2e26a54b5409e0ee5206ea75c2, type: 2}
-  m_sharedMaterial: {fileID: 5993714797713300811, guid: 8600fa2e26a54b5409e0ee5206ea75c2, type: 2}
+  m_sharedMaterial: {fileID: -5478832325370705143, guid: 8600fa2e26a54b5409e0ee5206ea75c2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
